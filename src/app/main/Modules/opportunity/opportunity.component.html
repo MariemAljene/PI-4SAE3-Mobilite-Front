@@ -1,0 +1,88 @@
+
+<div class="mb-3 row">
+    <label for="table-complete-search" class="col-xs-3 col-sm-auto col-form-label">Recherche:</label>
+    <div class="col-xs-3 col-sm-auto">
+        <input id="table-complete-search" type="text" class="form-control" name="searchTerm"  />
+    </div>
+    <button class="btn btn-primary ml-1" (click)="goToAddOpportunity()">
+        <i data-feather="plus" class="d-sm-none d-inline-block mr-0 mr-sm-1"></i><span class="d-none d-sm-inline-block">Ajouter Opportunité</span>
+    </button>
+</div>
+
+<div class="col-md-6 col-12">
+    <div class="d-flex justify-content-between align-items-center m-1">
+        <label class="d-flex align-items-center">Show
+            <select class="form-control mx-25" name="pageSize">
+                <option value="2">2</option>
+                <option value="4">4</option>
+                <option value="6">6</option>
+            </select>
+            entries
+        </label>
+    </div>
+</div>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Titre</th>
+        <th scope="col">Date de début</th>
+        <th scope="col">Date de fin</th>
+        <th scope="col">Spécialité</th>
+        <th scope="col">Capacité</th>
+        <th scope="col">Statut</th> <!-- Nouvelle colonne pour le statut -->
+        <th scope="col"></th>
+
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let opportunity of opportunities; let i = index">
+        <th scope="row">{{ i+1 }}</th>
+        <td>{{ opportunity.title }}</td>
+        <td>{{ opportunity.starDate }}</td>
+        <td>{{ opportunity.endDate }}</td>
+        <td>{{ opportunity.specialite }}</td>
+        <td>{{ opportunity.capacity }}</td>
+        <td>
+    <span style="color: {{ (currentDate > opportunity.endDate) ? 'red' : 'green' }}">
+        {{ (currentDate > opportunity.endDate) ? 'Terminée' : 'En cours' }}
+    </span>
+        </td>
+        <td><button type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                    (click)="edit(opportunity)">✎</button></td>
+        <td>
+            <button type="button" class="btn btn-sm btn-outline-secondary"
+                    (click)="confirmDeleteOpportunity(opportunity.id_Opportunity)">❌</button>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<!-- opportunity.component.html -->
+
+<!-- ... -->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-   title" id="exampleModalLabel">Update Opportunity</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form #updateForm="ngForm" (ngSubmit)="updateOpportunity()">
+                    <div class="form-group">
+                        <label for="Capacity"> Capacity :</label>
+                        <input type="number" #Capacity [(ngModel)]="OpportunityToUpdate.Capacity" name="Capacity" id="Capacity"
+                               class="form-control" placeholder="Capacity">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
