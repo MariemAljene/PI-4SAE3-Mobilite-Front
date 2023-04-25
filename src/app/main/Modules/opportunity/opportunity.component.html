@@ -50,39 +50,36 @@
         {{ (currentDate > opportunity.endDate) ? 'Terminée' : 'En cours' }}
     </span>
         </td>
-        <td><button type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                    (click)="edit(opportunity)">✎</button></td>
-        <td>
-            <button type="button" class="btn btn-sm btn-outline-secondary"
+        <td><button type="button" class="btn btn-sm btn-outline-secondary" (click)="showUpdateForm(opportunity)">Modifier</button></td>
+
+        <button type="button" class="btn btn-sm btn-outline-secondary"
                     (click)="confirmDeleteOpportunity(opportunity.id_Opportunity)">❌</button>
-        </td>
+
     </tr>
     </tbody>
 </table>
-<!-- opportunity.component.html -->
-
-<!-- ... -->
-
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-   title" id="exampleModalLabel">Update Opportunity</h5>
-                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form #updateForm="ngForm" (ngSubmit)="updateOpportunity()">
-                    <div class="form-group">
-                        <label for="Capacity"> Capacity :</label>
-                        <input type="number" #Capacity [(ngModel)]="OpportunityToUpdate.Capacity" name="Capacity" id="Capacity"
-                               class="form-control" placeholder="Capacity">
-                    </div>
-                    <button type="submit" class="btn btn-primary">Update</button>
-                </form>
-            </div>
+<div *ngIf="selectedOpportunity">
+    <form (submit)="updateOpportunity()">
+        <div class="form-group">
+            <label for="title">Titre:</label>
+            <input type="text" class="form-control" id="title" [(ngModel)]="selectedOpportunity.title" name="title" required>
         </div>
-    </div>
+        <div class="form-group">
+            <label for="starDate">Date de début:</label>
+            <input type="date" class="form-control" id="starDate" [(ngModel)]="selectedOpportunity.starDate" name="starDate" required>
+        </div>
+        <div class="form-group">
+            <label for="endDate">Date de fin:</label>
+            <input type="date" class="form-control" id="endDate" [(ngModel)]="selectedOpportunity.endDate" name="endDate" required>
+        </div>
+        <div class="form-group">
+            <label for="specialite">Spécialité:</label>
+            <input type="text" class="form-control" id="specialite" [(ngModel)]="selectedOpportunity.specialite" name="specialite" required>
+        </div>
+        <div class="form-group">
+            <label for="capacity">Capacité:</label>
+            <input type="number" class="form-control" id="capacity" [(ngModel)]="selectedOpportunity.capacity" name="capacity" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Enregistrer</button>
+    </form>
 </div>

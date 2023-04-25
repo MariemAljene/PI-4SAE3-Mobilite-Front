@@ -32,7 +32,6 @@ export class OpportunityComponent implements OnInit {
     }
 
     opportunities: Opportunity[];
-    selectedOpportunity: any = {};
 
     saveOpportunity(): void {
         // call the service method to save the opportunity
@@ -90,9 +89,23 @@ export class OpportunityComponent implements OnInit {
     edit(opporutnity: Opportunity) {
         this.opportunityToUpdate = opporutnity;
     }
+    public updateOpportunity(): void {
+        this.opportunityService.updateOpportunity(this.selectedOpportunity).subscribe(
+            (result) => {
+                // hide the update form
+                // refresh the Opportunities list
+            },
+            (error) => {
+                console.log(error);
+            }
+        );
+    }
 
-    updateOpportunity() {
-        this.saveOpportunity();
-        location.reload();
+
+    public selectedOpportunity: Opportunity;
+
+    public showUpdateForm(opportunity: Opportunity): void {
+        this.selectedOpportunity = opportunity;
+        // show the update form
     }
 }
