@@ -24,6 +24,8 @@ import {OpportunityFormComponent} from './main/Modules/opportunity/opportunity-f
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {EditOpportunityComponent} from './main/Modules/opportunity/edit-opportunity/edit-opportunity.component';
 import {RemoveOpportunityComponent} from './main/Modules/opportunity/remove-opportunity/remove-opportunity.component';
+import { AddQuestionComponent } from './main/Modules/Question/Add_Question/add-question/add-question.component';
+import { RetreiveQuestionComponent } from './main/Modules/Question/Retreive-Question/retreive-question/retreive-question.component';
 
 const appRoutes: Routes = [
     {
@@ -38,10 +40,13 @@ const appRoutes: Routes = [
     {
         path: 'delete-opportunity/:Id_Opportunity',
         component: RemoveOpportunityComponent
+    },{
+        path: 'RetreiveQuestion/:Id_Opportunity',
+        component: RetreiveQuestionComponent
     },
     {path: 'ajouter-opportunite', component: OpportunityFormComponent},
     {
-        path: 'edit/:id',
+        path: 'edit/:Id_Opportunity',
         component: EditOpportunityComponent
     }
 
@@ -64,7 +69,10 @@ const appRoutes: Routes = [
         OpportunityComponent,
         OpportunityFormComponent,
         EditOpportunityComponent,
-        RemoveOpportunityComponent],
+        RemoveOpportunityComponent,
+        AddQuestionComponent,
+        RetreiveQuestionComponent,
+        ],
     imports: [
         BrowserModule,
         BrowserAnimationsModule,

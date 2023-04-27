@@ -7,7 +7,6 @@ import {Opportunity} from "../../../../models/Opportunity";
   styleUrls: ['./edit-opportunity.component.scss']
 })
 export class EditOpportunityComponent implements OnInit {
-Opportunity :Opportunity;
   constructor() { }
 
   ngOnInit(): void {

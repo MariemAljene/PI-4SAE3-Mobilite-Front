@@ -12,6 +12,7 @@ export class Opportunity {
     coef1stYear: number;
     coef2stYear: number;
     coef3stYear: number;
+    code:String;
     qrContent: string;
     qrCodeImage: any;
     createdBy: any;

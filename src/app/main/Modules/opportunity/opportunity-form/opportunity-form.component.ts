@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
-import { OpportunityService } from './form-service.service';
 import {Router} from "@angular/router";
+import {OpportunityServiceService} from "../opportunity-service.service";
+import {FormOpportunityService} from "./form-opportunity.service";
+import { FormsModule } from '@angular/forms';
+
 
 @Component({
   selector: 'app-opportunity-form',
@@ -33,7 +36,7 @@ export class OpportunityFormComponent {
     title: new FormControl('', Validators.required)
   });
 
-  constructor(private opportunityService: OpportunityService,private router: Router) {}
+  constructor(private opportunityService: FormOpportunityService,private router: Router) {}
 
   onSubmit(form: NgForm) {
     const opportunity: any = form.value;

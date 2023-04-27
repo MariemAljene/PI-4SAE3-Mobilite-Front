@@ -14,14 +14,14 @@ export class OpportunityServiceService {
   getAllOpportunities(): Observable<Opportunity[]> {
     return this._http.get<Opportunity[]>(this.usersUrl+'/GetAll');
   }
-  public updateOpportunity(id: any) {
-    return this._http.put(this.usersUrl + '/updateOpportunity/' + id, id);
+  public updateOpportunity(opportunity: any) {
+    return this._http.put(this.usersUrl + '/Update', opportunity);
   }
-  public deleteOpportunity(id: number) {
+  public deleteOpportunity(id: any) {
     if (id === undefined) {
       return throwError("Invalid opportunity ID");
     }
-    return this._http.delete("http://localhost:8091/ExamenBlancTemplate/OpportunityManagement/Opportunity/Delete/"+ id);
+    return this._http.delete("http://localhost:8082/ExamenBlancTemplate/OpportunityManagement/Opportunity/Delete/"+ id);
   }
 
 

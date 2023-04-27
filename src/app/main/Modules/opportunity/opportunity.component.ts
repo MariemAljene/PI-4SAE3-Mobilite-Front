@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {OpportunityServiceService} from "./opportunity-service.service";
-import {Opportunity} from "../../../models/Opportunity";
 import {HttpClient} from "@angular/common/http";
+import {Opportunity} from "../../../models/Opportunity";
 
 @Component({
     selector: 'app-opportunity',
@@ -12,14 +12,14 @@ import {HttpClient} from "@angular/common/http";
 export class OpportunityComponent implements OnInit {
     OpportunityToUpdate = {
         id_Opportunity: "",
-        Capacity: "",
-        StarDate: "",
-        EndDate: "",
-        Type: "",
+        capacity: "",
+        starDate: "",
+        endDate: "",
+        type: "",
         grade: "",
         specialite: "",
         needs: "",
-        Description: "",
+        description: "",
         Title: "",
         Coef1stYear: "",
         Coef2stYear: "",
@@ -33,17 +33,7 @@ export class OpportunityComponent implements OnInit {
 
     opportunities: Opportunity[];
 
-    saveOpportunity(): void {
-        // call the service method to save the opportunity
-        this.opportunityService.updateOpportunity(this.OpportunityToUpdate.id_Opportunity).subscribe(
-            () => {
-                // handle success
-            },
-            (error) => {
-                // handle error
-            }
-        );
-    }
+
 
     ngOnInit(): void {
         this.opportunityService.getAllOpportunities().subscribe(res => {
@@ -86,20 +76,24 @@ export class OpportunityComponent implements OnInit {
 
 
 
-    edit(opporutnity: Opportunity) {
-        this.opportunityToUpdate = opporutnity;
+    edit(opportunity: any){
+        this.opportunityToUpdate = opportunity;
     }
-    public updateOpportunity(): void {
-        this.opportunityService.updateOpportunity(this.selectedOpportunity).subscribe(
-            (result) => {
-                // hide the update form
-                // refresh the Opportunities list
+
+    updateJournal(){
+        this.opportunityService.updateOpportunity(this.OpportunityToUpdate).subscribe(
+            (resp) => {
+                console.log(resp);
             },
-            (error) => {
-                console.log(error);
+            (err) => {
+                console.log(err);
             }
         );
     }
+
+
+
+
 
 
     public selectedOpportunity: Opportunity;
