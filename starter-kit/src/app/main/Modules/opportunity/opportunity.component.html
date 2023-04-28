@@ -1,0 +1,106 @@
+<div class="row mb-3">
+    <div class="col-sm-6">
+        <div class="input-group">
+            <input id="table-complete-search" type="text" class="form-control" name="searchTerm" placeholder="Recherche...">
+            <div class="input-group-append">
+                <button class="btn btn-primary" type="button" (click)="goToAddOpportunity()">
+                    <i class="fas fa-plus"></i> Ajouter Opportunité
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="d-flex justify-content-end align-items-center">
+            <label class="mr-2">Afficher:</label>
+            <select class="form-control" name="pageSize">
+                <option value="2">2</option>
+                <option value="4">4</option>
+                <option value="6">6</option>
+            </select>
+            <label class="ml-2">entrées</label>
+        </div>
+    </div>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-hover table-bordered">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Titre</th>
+            <th scope="col">Date de début</th>
+            <th scope="col">Date de fin</th>
+            <th scope="col">Spécialité</th>
+            <th scope="col">Capacité</th>
+            <th scope="col">Statut</th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let opportunity of opportunities; let i = index">
+            <th scope="row">{{ i+1 }}</th>
+            <td>{{ opportunity.title }}</td>
+            <td>{{ opportunity.starDate }}</td>
+            <td>{{ opportunity.endDate }}</td>
+            <td>{{ opportunity.specialite }}</td>
+            <td>{{ opportunity.capacity }}</td>
+            <td>
+                    <span style="color: {{ (currentDate > opportunity.endDate) ? 'red' : 'green' }}">
+                        {{ (currentDate > opportunity.endDate) ? 'Terminée' : 'En cours' }}
+                    </span>
+            </td>
+            <td>
+                <button type="button" class="btn btn-sm btn-outline-secondary mr-2" (click)="showUpdateForm(opportunity)">
+                    <i class="fas fa-edit"></i> Modifier
+                </button>
+                <button type="button" class="btn btn-sm btn-outline-danger" (click)="confirmDeleteOpportunity(opportunity.id_Opportunity)">
+                    <i class="fas fa-times"></i>
+                </button>
+                <button type="button" class="btn btn-sm btn-outline-warning mr-2" (click)="generateQRCode(opportunity.id_Opportunity)">
+                    <i class="fas fa-qrcode"></i> QR Code
+                </button>
+
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div *ngIf="selectedOpportunity">
+    <form #f="ngForm">
+        <div class="form-group">
+            <label for="id_Opportunity"> id_Opportunity :</label>
+            <input type="number" disabled #id_Opportunity [(ngModel)]="opportunityToUpdate.id_Opportunity" name="id_Opportunity" id="id_Opportunity"
+                   class="form-control" placeholder="id_Opportunity">
+        </div>
+        <div ></div>
+        <div class="form-group">
+            <label for="title">Titre:</label>
+            <input type="text" class="form-control" id="title" [(ngModel)]="opportunityToUpdate.title" name="title" required>
+        </div>
+        <div class="form-group">
+            <label for="starDate">Date de début:</label>
+            <input type="date" class="form-control" id="starDate" [(ngModel)]="opportunityToUpdate.starDate" name="starDate" required>
+        </div>
+        <div class="form-group">
+            <label for="endDate">Date de fin:</label>
+            <input type="date" class="form-control" id="endDate" [(ngModel)]="opportunityToUpdate.endDate" name="endDate" required>
+        </div>
+        <div class="form-group">
+            <label for="specialite">Spécialité:</label>
+            <select class="form-control" id="Specialite" name="specialite" [(ngModel)]="opportunityToUpdate.specialite" required>
+                <option value="ALL">ALL</option>
+                <option value="SAE">SAE</option>
+                <option value="TWIN">TWIN</option>
+                <option value="INFINI">INFINI</option>
+                <option value="BI">BI</option>
+                <option value="SIM">SIM</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="capacity">Capacité:</label>
+            <input type="number" class="form-control" id="capacity" [(ngModel)]="opportunityToUpdate.capacity" name="capacity" required>
+        </div>
+        <button type="submit" class="btn btn-primary" (click)="updateJournal()">Enregistrer</button>
+    </form>
+</div>
