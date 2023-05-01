@@ -23,4 +23,10 @@ export interface CoreMenuItem {
 
 export interface CoreMenu extends CoreMenuItem {
   children?: CoreMenuItem[];
+
 }
+export interface CoreMenu2 extends CoreMenuItem {
+    children?: CoreMenuItem[];
+
+}
+

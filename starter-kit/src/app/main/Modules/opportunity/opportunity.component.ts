@@ -5,6 +5,8 @@ import {HttpClient} from "@angular/common/http";
 import {Opportunity} from "../../../models/Opportunity";
 import * as pdfMake from 'pdfmake/build/pdfmake';
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
+import {Observable} from "rxjs";
+import {map} from "rxjs/operators";
 (pdfMake as any).vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
@@ -42,8 +44,24 @@ export class OpportunityComponent implements OnInit {
         this.opportunityService.getAllOpportunities().subscribe(res => {
             this.opportunities = res;
             console.log(this.opportunities);
+
+            // find the opportunity with the matching ID and set the opportunityId property
+            const opportunity = this.opportunities.find(o => o.id_Opportunity === this.opportunityId);
+            if (opportunity) {
+                this.opportunityId = opportunity.id_Opportunity;
+            }
         });
+
+
+        this.opportunityService.getOpportunityById(this.opportunityId).subscribe(opportunity => {
+                this.opportunity1 = opportunity;
+                this.title = opportunity.title;
+                this.capacity = opportunity.capacity;
+            });
+
+
     }
+
 
     goToAddOpportunity() {
         this.router.navigate(['/ajouter-opportunite']);
@@ -133,34 +151,83 @@ export class OpportunityComponent implements OnInit {
 
         pdfMake.createPdf(docDefinition).download('qr-code.pdf');
     }
+    opportunityId: number=0;
+
+    opportunity1: Opportunity;
+
     public selectedOpportunity: Opportunity;
 
     title:any
     capacity:any
-    generatePdfWithQRCode(qrCode: string): void {
-        const docDefinition = {
-            content: [
-                {
-                    text: 'Titre de l opportunité: ' + this.,
-                    fontSize: 16,
-                    bold: true
-                },
-                {
-                    text: 'Capacité: ' + this.capacity,
-                    fontSize: 14,
-                },
-                {
-                    image: qrCode,
-                    fit: [150, 150] // taille du QR code
-                }
-            ]
-        };
+     // @ts-ignore
+    description = this.description;
 
-        pdfMake.createPdf(docDefinition).download('qr-code.pdf');
+    generatePdfWithQRCode(qrCode: string): void {
+        this.opportunityService.getOpportunityById(this.opportunityId).subscribe((opportunity: Opportunity) => {
+            const docDefinition = {
+                content: [
+                    {
+                        text: opportunity.title,
+                        fontSize: 24,
+                        bold: true,
+                        alignment: 'center',
+                        margin: [0, 0, 0, 10],
+                        color: '#FF5733'
+                    },
+                    {
+                        text: opportunity.description,
+                        fontSize: 14,
+                        margin: [0, 0, 0, 20],
+                        color: '#808080'
+                    },
+                    {
+                        text: 'Date Debut : ' + opportunity.starDate,
+                        fontSize: 14,
+                        margin: [0, 0, 0, 20],
+                        color: '#FF5733'
+                    },
+                    {
+                        text: 'Date fin: ' + opportunity.endDate,
+                        fontSize: 14,
+                        margin: [0, 0, 0, 20],
+                        color: '#FF5733'
+                    },
+                    {
+                        alignment: 'center',
+                        image: qrCode,
+                        fit: [150, 150],
+                        margin: [0, 0, 0, 10],
+                        border: [true, true, true, true],
+                        borderColor: '#000',
+                        borderWidth: 1
+                    },
+                    {
+                        alignment: 'center',
+                        text: 'Scan Me 📷',
+                        fontSize: 12,
+                        margin: [0, 0, 0, 10],
+                        color: '#FF5733'
+                    }
+                ],
+                styles: {
+                    header: {
+                        bold: true,
+                        color: 'blue'
+                    }
+                },
+                pageMargins: [40, 60, 40, 60], // add margins to give space for the border
+                pageBorderWidth: 1, // set border width
+                pageBorderColor: '#000' // set border color
+            };
+
+            pdfMake.createPdf(docDefinition).download('qr-code.pdf');
+        });
     }
 
 
     generateQRCode(id: any): void {
+        this.opportunityId = id;
+
         this.opportunityService.generateQRCodeForOpportunity(id)
             .subscribe(
                 (response) => {

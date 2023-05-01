@@ -1,19 +1,27 @@
-<div class="form-group">
-    <label for="code">Code:</label>
-    <input type="text" class="form-control" id="code" [(ngModel)]="code">
+<div class="row mb-3">
+    <div class="col-12 col-md-6 mb-2">
+        <button class="btn btn-primary" (click)="goToAddCandidacy()">Ajouter</button>
+    </div>
+    <div class="col-12 col-md-6 mb-2">
+        <div class="form-group">
+            <label for="code">Code:</label>
+            <input type="text" class="form-control" id="code" [(ngModel)]="code">
+        </div>
+
+        <button class="btn btn-primary" (click)="retrieveCandidaciesByCode()">Rechercher</button>
+    </div>
 </div>
-<button class="btn btn-primary" (click)="retrieveCandidaciesByCode()">Rechercher</button>
 
 <table class="table table-striped">
     <thead>
     <tr>
         <th scope="col">#</th>
-        <th scope="col">Opportunity Title</th>
-        <th scope="col">Moyenne_1year</th>
-        <th scope="col">Moyenne_2year</th>
-        <th scope="col">Moyenne_3year</th>
-        <th scope="col">score</th>
-        <th scope="col">Status</th>
+        <th scope="col">Nom de la faculté</th>
+        <th scope="col">Moyenne 1ère année</th>
+        <th scope="col">Moyenne 2ème année</th>
+        <th scope="col">Moyenne 3ème année</th>
+        <th scope="col">Score</th>
+        <th scope="col">Statut</th>
         <th scope="col"></th>
     </tr>
     </thead>

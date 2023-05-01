@@ -33,6 +33,10 @@ export class CandidacyComponent implements OnInit {
       console.log("Veuillez entrer un code avant de récupérer les candidatures.");
     }
   }
+  goToAddCandidacy() {
+    this.router.navigate(['/candidacies/add']);
+  }
+
 
   ngOnInit(): void {
     this.candidacyServiceService.getAllCandidacies().subscribe(res => {

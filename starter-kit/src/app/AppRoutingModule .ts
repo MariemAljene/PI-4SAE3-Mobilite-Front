@@ -13,6 +13,8 @@ import {EditOpportunityComponent} from './main/Modules/opportunity/edit-opportun
 import {RemoveOpportunityComponent} from './main/Modules/opportunity/remove-opportunity/remove-opportunity.component';
 import { AddQuestionComponent } from './main/Modules/Question/Add_Question/add-question/add-question.component';
 import { RetreiveQuestionComponent } from './main/Modules/Question/Retreive-Question/retreive-question/retreive-question.component';
+import {SpecialityChartComponent} from "./main/Modules/opportunity/speciality-chart/speciality-chart.component";
+import {AddCondidacyComponent} from "./main/Modules/candidacy/add-condidacy/add-condidacy.component";
 
 
 
@@ -49,6 +51,9 @@ const routes: Routes = [
     {path: 'Retreive-opportunite', component: OpportunityComponent},
 
     {path: 'ajouter-opportunite', component: OpportunityFormComponent},
+    { path: 'chart', component: SpecialityChartComponent },
+    { path: 'candidacies/add', component: AddCondidacyComponent },
+
 
     {
         path: "**",

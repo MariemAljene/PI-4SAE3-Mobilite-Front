@@ -36,9 +36,14 @@ countadmin=this.userService.countadmin().subscribe((data: number) => {
       layout: {
         skin  : 'dark',                        // default, dark, bordered, semi-dark
         type  : 'vertical'
+      },
+        menu : {
+        hidden               : false,           // Boolean: true, false
+        collapsed            : false,           // Boolean: true, false
+      },
       }
     };
-   }
+
 
 
   ngOnInit(): void {

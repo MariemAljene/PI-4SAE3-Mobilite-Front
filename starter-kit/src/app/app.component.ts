@@ -18,6 +18,9 @@ import { locale as menuEnglish } from 'app/menu/i18n/en';
 import { locale as menuFrench } from 'app/menu/i18n/fr';
 import { locale as menuGerman } from 'app/menu/i18n/de';
 import { locale as menuPortuguese } from 'app/menu/i18n/pt';
+import {AdminComponent} from "./main/Modules/Admin/admin.component";
+import {AuthenticationService} from "./auth/service";
+import {menu2} from "./menu/menu2";
 
 @Component({
   selector: 'app-root',
@@ -57,8 +60,19 @@ export class AppComponent implements OnInit, OnDestroy {
     private _coreLoadingScreenService: CoreLoadingScreenService,
     private _coreMenuService: CoreMenuService,
     private _coreTranslationService: CoreTranslationService,
-    private _translateService: TranslateService
+    private _translateService: TranslateService,
+   private _authenticationService:AuthenticationService
   ) {
+
+
+
+
+    // Register the menu to the menu service
+    this._coreMenuService.register('main', this.menu);
+
+    // Set the main menu as our current menu
+    this._coreMenuService.setCurrentMenu('main');
+
     // Get the application main menu
     this.menu = menu;
 

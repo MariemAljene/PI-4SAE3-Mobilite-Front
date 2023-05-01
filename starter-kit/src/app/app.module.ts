@@ -33,6 +33,8 @@ import {
 } from "./main/Modules/Question/Retreive-Question/retreive-question/retreive-question.component";
 import {AddQuestionComponent} from "./main/Modules/Question/Add_Question/add-question/add-question.component";
 import {RemoveOpportunityComponent} from "./main/Modules/opportunity/remove-opportunity/remove-opportunity.component";
+import { SpecialityChartComponent } from './main/Modules/opportunity/speciality-chart/speciality-chart.component';
+import { AddCondidacyComponent } from './main/Modules/candidacy/add-condidacy/add-condidacy.component';
 const appRoutes: Routes = [];
 
 @NgModule({
@@ -42,7 +44,9 @@ const appRoutes: Routes = [];
     EditOpportunityComponent,
     RemoveOpportunityComponent,
     AddQuestionComponent,
-    RetreiveQuestionComponent,],
+    RetreiveQuestionComponent,
+    SpecialityChartComponent,
+    AddCondidacyComponent,],
   imports: [
     CommonModule,
     ContentHeaderModule,
