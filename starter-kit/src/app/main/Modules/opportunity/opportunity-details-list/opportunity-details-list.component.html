@@ -1,8 +1,18 @@
-<div class="opportunity-details">
-    <p>Title: {{ opportunity.title }}</p>
-    <p>Date de début: {{ opportunity.starDate }}</p>
-    <p>Date de fin: {{ opportunity.endDate }}</p>
-    <p>Spécialité: {{ opportunity.specialite }}</p>
-    <p>Capacité: {{ opportunity.capacity }}</p>
-    <p>Type: {{ opportunity.type }}</p>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-4 text-center">
+            <img src="./assets/images/pages/ListOpportunuty.png" class="img-fluid" style="height: 500px;">
+        </div>
+        <div class="col-md-8 d-flex flex-column justify-content-center align-items-center">
+            <h2><p style="text-decoration: underline; font-weight: bold; font-size: 2.5em; margin-bottom: 1em;">{{opportunity.title}}</p></h2>
+            <p style="font-size: 1.5em; margin-bottom: 1em;" class="text-left">Description : {{opportunity.description}}</p>
+            <p style="font-size: 1.5em; margin-bottom: 1em;" class="text-left">Date de fin : {{opportunity.endDate | date}}</p>
+            <p style="font-size: 1.5em; margin-bottom: 1em;" class="text-left">Spécialité : {{opportunity.specialite}}</p>
+            <p style="font-size: 1.5em; margin-bottom: 1em;" class="text-left">Type : {{opportunity.type}}</p>
+
+            <div style="margin-top: auto;">
+                <button class="btn btn-primary" style="font-size: 1.5em;">Postuler</button>
+            </div>
+        </div>
+    </div>
 </div>

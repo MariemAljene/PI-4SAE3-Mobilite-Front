@@ -1,31 +1,42 @@
-<div class="content-wrapper container-xxl p-0">
-  <div class="content-body">
-    <!-- content-header component -->
-    <app-content-header [contentHeader]="contentHeader"></app-content-header>
+<div id="header-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img class="mx-auto d-block img-medium" src="assets/img/ImageEsprit.jpg" alt="Image" style="max-width: 1500px; height: auto;">
+            <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                <div class="p-3" style="max-width: 900px;">
+                    <h3 class="text-white text-uppercase mb-3 animated slideInDown">Welcome To our Website</h3>
+                    <p class="display-1 text-white mb-md-4 animated zoomIn">Esprit Mobility</p>
 
-    <!-- Basic Alerts start -->
-    <section id="home-page">
-      <div class="row">
-        <div class="col-12">
-          <div class="card">
-            <div class="card-header">
-              <h4 class="card-title">Welcome to your Shop Dashboard 🚀</h4>
+                </div>
             </div>
-            <div class="card-body pb-1">
-              <p class="card-text">You can manage your products , bills etc</p>
-              <p class="card-text">
-                Please make sure to read our
-              
-                to understand where to go from here and how to use your dashboard.
-              </p>
-            </div>
-          </div>
         </div>
-      </div>
-    </section>
-    <!--<app-basic-card></app-basic-card>-->
-    <!-- <app-animation-home></app-animation-home>-->
-  
-    <!-- Basic Alerts end -->
-  </div>
+        <div class="carousel-item">
+            <img class="mx-auto d-block img-medium" src="img/carousel-2.jpg" alt="Image">
+            <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                <div class="p-3" style="max-width: 900px;">
+                    <h5 class="text-white text-uppercase mb-3 animated slideInDown">Creative & Innovative</h5>
+                    <h1 class="display-1 text-white mb-md-4 animated zoomIn">Creative & Innovative Digital Solution</h1>
+                    <a href="quote.html" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Free Quote</a>
+                    <a href="" class="btn btn-outline-light py-md-3 px-md-5 animated slideInRight">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel"
+            data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#header-carousel"
+            data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
 </div>
+
+<style>
+    .carousel-item img {
+        margin: 0 auto;
+        display: block;
+    }
+</style>

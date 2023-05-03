@@ -15,5 +15,5 @@
         <label for="motivationdescription">Description de la motivation :</label>
         <textarea class="form-control" id="motivationdescription" name="motivationdescription" ngModel required></textarea>
     </div>
-    <button type="submit" class="btn btn-primary">Postuler</button>
+    <button type="submit" class="btn btn-primary" (click)="createCandidacy(condidacyForm)">Postuler</button>
 </form>

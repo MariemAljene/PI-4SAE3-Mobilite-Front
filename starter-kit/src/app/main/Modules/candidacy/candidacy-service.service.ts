@@ -50,7 +50,7 @@ export class CandidacyServiceService implements Resolve<any>{
     }
   }
   createCandidate( candidate: Condidacy, idStudent: string,idOpportunity: number,): Observable<Condidacy> {
-    return this._http.post<Condidacy>(this.api + `/Pi_Mobility/RetreiveCandidacyOppParCode/${idStudent}/${idOpportunity}`, candidate,this.httpOptions);
+    return this._http.post<Condidacy>(this.api + `/Pi_Mobility/Condidacy/CreateNew/${idStudent}/${idOpportunity}`, candidate,this.httpOptions);
   }
   retrieveCandidaciesByCode(code: string): Observable<any[]> {
     if (code) {
