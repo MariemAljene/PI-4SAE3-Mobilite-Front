@@ -28,13 +28,19 @@ import {CandidacyComponent} from "./main/Modules/candidacy/candidacy.component";
 import {EditOpportunityComponent} from "./main/Modules/opportunity/edit-opportunity/edit-opportunity.component";
 import {OpportunityComponent} from "./main/Modules/opportunity/opportunity.component";
 import {OpportunityFormComponent} from "./main/Modules/opportunity/opportunity-form/opportunity-form.component";
-import {
-  RetreiveQuestionComponent
-} from "./main/Modules/Question/Retreive-Question/retreive-question/retreive-question.component";
+
 import {AddQuestionComponent} from "./main/Modules/Question/Add_Question/add-question/add-question.component";
 import {RemoveOpportunityComponent} from "./main/Modules/opportunity/remove-opportunity/remove-opportunity.component";
 import { SpecialityChartComponent } from './main/Modules/opportunity/speciality-chart/speciality-chart.component';
 import { AddCondidacyComponent } from './main/Modules/candidacy/add-condidacy/add-condidacy.component';
+import { OpportunityListFrontComponent } from './main/Modules/opportunity/opportunity-list-front/opportunity-list-front.component';
+import {
+  OpportunityDetailsListComponent
+} from "./main/Modules/opportunity/opportunity-details-list/opportunity-details-list.component";
+import { HistoriqueCondidaciesComponent } from './main/Modules/candidacy/historique-condidacies/historique-condidacies.component';
+import { QuizBackComponent } from './main/Modules/Quiz/quiz-back/quiz-back.component';
+import { QuizAddComponent } from './main/Modules/Quiz/Add-Quiz/quiz-add/quiz-add.component';
+import {AfficherQuestionComponent} from "./main/Modules/Question/afficher-question/afficher-question.component";
 const appRoutes: Routes = [];
 
 @NgModule({
@@ -44,9 +50,14 @@ const appRoutes: Routes = [];
     EditOpportunityComponent,
     RemoveOpportunityComponent,
     AddQuestionComponent,
-    RetreiveQuestionComponent,
     SpecialityChartComponent,
-    AddCondidacyComponent,],
+    AddCondidacyComponent,
+    OpportunityListFrontComponent,
+    OpportunityDetailsListComponent,
+    HistoriqueCondidaciesComponent,
+    AfficherQuestionComponent,
+    QuizBackComponent,
+    QuizAddComponent,],
   imports: [
     CommonModule,
     ContentHeaderModule,

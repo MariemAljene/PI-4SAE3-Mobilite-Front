@@ -30,19 +30,5 @@ export const menu: CoreMenu[] = [
     type: 'item',
     icon: 'file',
     url: 'Quiz'
-  },  {
-    id: 'Question',
-    title: 'Question',
-    translate: 'Question',
-    type: 'item',
-    icon: 'file',
-    url: 'Question'
-  },  {
-    id: 'OpportunityList',
-    title: 'ListOpportunity',
-    translate: 'ListOpportunity',
-    type: 'item',
-    icon: 'file',
-    url: 'ListOpportunity'
   }
 ]

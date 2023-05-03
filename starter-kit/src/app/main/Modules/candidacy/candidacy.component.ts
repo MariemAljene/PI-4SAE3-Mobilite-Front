@@ -5,6 +5,7 @@ import {OpportunityServiceService} from "../opportunity/opportunity-service.serv
 import {Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 import {CandidacyServiceService} from "./candidacy-service.service";
+import {AuthenticationService} from "../../../auth/service";
 
 
 @Component({
@@ -19,7 +20,7 @@ export class CandidacyComponent implements OnInit {
   opportunities:Opportunity[];
 
 
-  constructor(private candidacyServiceService: CandidacyServiceService, private router: Router, private _http: HttpClient) { }
+  constructor(private candidacyServiceService: CandidacyServiceService, private router: Router, private _http: HttpClient,private  AuthenticationService:AuthenticationService ) { }
 
   code: string
   retrieveCandidaciesByCode() {
@@ -39,10 +40,17 @@ export class CandidacyComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.candidacyServiceService.getAllCandidacies().subscribe(res => {
+    if(this.AuthenticationService.currentUserValue.role[0].roleName=="Admin" ){ this.candidacyServiceService.getAllCandidacies().subscribe(res => {
       this.Condidacies = res;
       console.log(this.opportunities);
-    });
+    });}
+    else if(this.AuthenticationService.currentUserValue.role[0].roleName=="User")
+    {
+      this.router.navigate(['/HistoriqueCandidacy']);
+
+    }
+
+
   }
 
   id_opportunity: any;

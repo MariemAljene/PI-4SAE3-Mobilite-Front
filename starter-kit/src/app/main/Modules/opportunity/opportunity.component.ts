@@ -1,12 +1,13 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {OpportunityServiceService} from "./opportunity-service.service";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Opportunity} from "../../../models/Opportunity";
 import * as pdfMake from 'pdfmake/build/pdfmake';
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 import {Observable} from "rxjs";
 import {map} from "rxjs/operators";
+import {AuthenticationService} from "../../../auth/service";
 (pdfMake as any).vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
@@ -33,34 +34,53 @@ export class OpportunityComponent implements OnInit {
     }
     opportunity: Opportunity
 
-    constructor(private opportunityService: OpportunityServiceService, private router: Router, private _http: HttpClient) {
+    constructor(private opportunityService: OpportunityServiceService,private  AuthenticationService:AuthenticationService ,private router: Router, private _http: HttpClient) {
     }
 
     opportunities: Opportunity[];
 
-
+    httpOptions = {
+        headers: new HttpHeaders({
+            'Authorization': 'Bearer ' + localStorage.getItem('jwtToken')
+        })
+    }
 
     ngOnInit(): void {
-        this.opportunityService.getAllOpportunities().subscribe(res => {
-            this.opportunities = res;
-            console.log(this.opportunities);
+        const roles = this.AuthenticationService.getRoles();
 
-            // find the opportunity with the matching ID and set the opportunityId property
-            const opportunity = this.opportunities.find(o => o.id_Opportunity === this.opportunityId);
-            if (opportunity) {
-                this.opportunityId = opportunity.id_Opportunity;
-            }
-        });
+        if(this.AuthenticationService.currentUserValue.role[0].roleName=="Admin" )
+        {
 
 
-        this.opportunityService.getOpportunityById(this.opportunityId).subscribe(opportunity => {
+            this.opportunityService.getAllOpportunities().subscribe(res => {
+                this.opportunities = res;
+                console.log(this.opportunities);
+
+                // find the opportunity with the matching ID and set the opportunityId property
+                const opportunity = this.opportunities.find(o => o.id_Opportunity === this.opportunityId);
+                if (opportunity) {
+                    this.opportunityId = opportunity.id_Opportunity;
+                }
+            });
+            this.opportunityService.getOpportunityById(this.opportunityId).subscribe(opportunity => {
                 this.opportunity1 = opportunity;
                 this.title = opportunity.title;
                 this.capacity = opportunity.capacity;
             });
+        }      else              if(this.AuthenticationService.currentUserValue.role[0].roleName=="User" )
+        {
+            this.router.navigate(['/OpportunityList']);
+
+        }
+        }
 
 
-    }
+
+
+
+
+
+
 
 
     goToAddOpportunity() {
@@ -101,16 +121,7 @@ export class OpportunityComponent implements OnInit {
         this.opportunityToUpdate = opportunity;
     }
 
-    updateJournal(){
-        this.opportunityService.updateOpportunity(this.OpportunityToUpdate).subscribe(
-            (resp) => {
-                console.log(resp);
-            },
-            (err) => {
-                console.log(err);
-            }
-        );
-    }
+
 
 
 
@@ -179,12 +190,6 @@ export class OpportunityComponent implements OnInit {
                         fontSize: 14,
                         margin: [0, 0, 0, 20],
                         color: '#808080'
-                    },
-                    {
-                        text: 'Date Debut : ' + opportunity.starDate,
-                        fontSize: 14,
-                        margin: [0, 0, 0, 20],
-                        color: '#FF5733'
                     },
                     {
                         text: 'Date fin: ' + opportunity.endDate,

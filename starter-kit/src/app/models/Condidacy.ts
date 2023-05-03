@@ -11,6 +11,6 @@ export class Condidacy {
     status: number;
     user:string;
     idTable:number;
-    opportunity:Opportunity;
+    opportunity:number;
     nameFaculte:string
 }

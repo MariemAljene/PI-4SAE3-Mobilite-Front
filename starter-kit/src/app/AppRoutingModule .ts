@@ -12,9 +12,22 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {EditOpportunityComponent} from './main/Modules/opportunity/edit-opportunity/edit-opportunity.component';
 import {RemoveOpportunityComponent} from './main/Modules/opportunity/remove-opportunity/remove-opportunity.component';
 import { AddQuestionComponent } from './main/Modules/Question/Add_Question/add-question/add-question.component';
-import { RetreiveQuestionComponent } from './main/Modules/Question/Retreive-Question/retreive-question/retreive-question.component';
 import {SpecialityChartComponent} from "./main/Modules/opportunity/speciality-chart/speciality-chart.component";
 import {AddCondidacyComponent} from "./main/Modules/candidacy/add-condidacy/add-condidacy.component";
+import {
+    OpportunityListFrontComponent
+} from "./main/Modules/opportunity/opportunity-list-front/opportunity-list-front.component";
+import {
+    OpportunityDetailsListComponent
+} from "./main/Modules/opportunity/opportunity-details-list/opportunity-details-list.component";
+import {
+    HistoriqueCondidaciesComponent
+} from "./main/Modules/candidacy/historique-condidacies/historique-condidacies.component";
+import {Q} from "@angular/cdk/keycodes";
+import {QuizBackComponent} from "./main/Modules/Quiz/quiz-back/quiz-back.component";
+import {QuizAddComponent} from "./main/Modules/Quiz/Add-Quiz/quiz-add/quiz-add.component";
+import {AfficherQuestionService} from "./main/Modules/Question/afficher-question/afficher-question.service";
+import {AfficherQuestionComponent} from "./main/Modules/Question/afficher-question/afficher-question.component";
 
 
 
@@ -44,17 +57,20 @@ const routes: Routes = [
     {
         path: 'delete-opportunity/:Id_Opportunity',
         component: RemoveOpportunityComponent
-    },{
-        path: 'RetreiveQuestion/:Id_Opportunity',
-        component: RetreiveQuestionComponent
     },
     {path: 'Retreive-opportunite', component: OpportunityComponent},
 
     {path: 'ajouter-opportunite', component: OpportunityFormComponent},
     { path: 'chart', component: SpecialityChartComponent },
     { path: 'candidacies/add', component: AddCondidacyComponent },
-
-
+    {path:'OpportunityList',component:OpportunityListFrontComponent},
+    { path: 'opportunitiy-id/:id_Opportunity', component: OpportunityDetailsListComponent },
+    { path: 'HistoriqueCandidacy', component: HistoriqueCondidaciesComponent },
+    { path: 'addCondidacy/:idOpportunity', component: AddCondidacyComponent },
+    {path:'Quiz',component:QuizBackComponent},
+    {path:'add-quiz',component :QuizAddComponent},
+    {path:'afficherQuestion',component:AfficherQuestionComponent},
+    {path:'add-question',component:AddQuestionComponent},
     {
         path: "**",
         redirectTo: "/pages/miscellaneous/error", //Error 404 - Page not found

@@ -20,7 +20,6 @@ import { locale as menuGerman } from 'app/menu/i18n/de';
 import { locale as menuPortuguese } from 'app/menu/i18n/pt';
 import {AdminComponent} from "./main/Modules/Admin/admin.component";
 import {AuthenticationService} from "./auth/service";
-import {menu2} from "./menu/menu2";
 
 @Component({
   selector: 'app-root',

@@ -1,1 +1,19 @@
-<p>add-condidacy works!</p>
+<form #condidacyForm="ngForm" (ngSubmit)="createCandidacy(condidacyForm)">
+    <div class="form-group">
+        <label for="moyenne_1year">Moyenne 1ère année :</label>
+        <input type="number" class="form-control" id="moyenne_1year" name="moyenne_1year" ngModel required>
+    </div>
+    <div class="form-group">
+        <label for="moyenne_2year">Moyenne 2ème année :</label>
+        <input type="number" class="form-control" id="moyenne_2year" name="moyenne_2year" ngModel required>
+    </div>
+    <div class="form-group">
+        <label for="moyenne_3year">Moyenne 3ème année :</label>
+        <input type="number" class="form-control" id="moyenne_3year" name="moyenne_3year" ngModel required>
+    </div>
+    <div class="form-group">
+        <label for="motivationdescription">Description de la motivation :</label>
+        <textarea class="form-control" id="motivationdescription" name="motivationdescription" ngModel required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Postuler</button>
+</form>

@@ -10,25 +10,25 @@ import {CoreConfigService} from "../../../../@core/services/config.service";
   styleUrls: ['./admin.component.scss']
 })
 export class AdminComponent implements OnInit {
-  
-user:User;
-userList:User[];
-c:number;
-co:number;
-ca:number;
-public currentUser: User;
-public contentHeader: object;
-count=this.userService.count().subscribe((data: number) => {
-  this.c = data;
-});
-countoperateur=this.userService.countoperateur().subscribe((data: number) => {
-  this.co = data;
-});
-countadmin=this.userService.countadmin().subscribe((data: number) => {
-  this.ca = data;
-});
- // private
- private _unsubscribeAll: Subject<any>;
+
+  user:User;
+  userList:User[];
+  c:number;
+  co:number;
+  ca:number;
+  public currentUser: User;
+  public contentHeader: object;
+  count=this.userService.count().subscribe((data: number) => {
+    this.c = data;
+  });
+  countoperateur=this.userService.countoperateur().subscribe((data: number) => {
+    this.co = data;
+  });
+  countadmin=this.userService.countadmin().subscribe((data: number) => {
+    this.ca = data;
+  });
+  // private
+  private _unsubscribeAll: Subject<any>;
   constructor(private _coreConfigService: CoreConfigService,private userService:UserService,private _authenticationService: AuthenticationService) {
     this._authenticationService.currentUser.subscribe(x => (this.currentUser = x));
     this._unsubscribeAll = new Subject();
@@ -36,13 +36,9 @@ countadmin=this.userService.countadmin().subscribe((data: number) => {
       layout: {
         skin  : 'dark',                        // default, dark, bordered, semi-dark
         type  : 'vertical'
-      },
-        menu : {
-        hidden               : false,           // Boolean: true, false
-        collapsed            : false,           // Boolean: true, false
-      },
       }
-    };
+    }
+  };
 
 
 
@@ -73,8 +69,8 @@ countadmin=this.userService.countadmin().subscribe((data: number) => {
       console.log(data);
       this.userService.getAll();
       location.reload();
-    
-  })
-}
+
+    })
+  }
 
 }

@@ -1,1 +1,32 @@
-<p>afficher-question works!</p>
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">Question</th>
+        <th scope="col">Image</th>
+        <th scope="col">Point</th>
+        <th scope="col">Réponses</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let question of questions">
+        <td>{{ question.content }}</td>
+        <img src="{{ question.image }}" style="width: 200px; height: 200px;">
+        <td>{{ question.point }}</td>
+        <td>
+            <ul>
+                <li *ngFor="let answer of question.answers">
+            <span [ngClass]="{'text-success': answer.correct, 'text-danger': !answer.correct}">
+              {{ answer.content }}
+            </span>
+                    <span *ngIf="answer.correct">
+              <i class="fas fa-check text-success"></i>
+            </span>
+                    <span *ngIf="!answer.correct">
+              <i class="fas fa-times text-danger"></i>
+            </span>
+                </li>
+            </ul>
+        </td>
+    </tr>
+    </tbody>
+</table>

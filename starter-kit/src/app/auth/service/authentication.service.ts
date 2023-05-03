@@ -86,9 +86,11 @@ export class AuthenticationService {
     localStorage.setItem('roles', JSON.stringify(roles));
   }
 
+
   public getRoles(): [] {
-    return JSON.parse(localStorage.getItem('roles'));
+    return JSON.parse(localStorage.getItem('roles')) ;
   }
+
 
   public setToken(jwtToken: string) {
     localStorage.setItem('jwtToken', jwtToken);

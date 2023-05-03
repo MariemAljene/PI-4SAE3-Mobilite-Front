@@ -36,7 +36,7 @@ export class OpportunityServiceService implements Resolve<any> {
     })
   }
 
-  usersUrl = "http://localhost:8082/ExamenBlancTemplate/OpportunityManagement/Opportunity\n";
+  usersUrl = "http://localhost:8082/ExamenBlancTemplate/OpportunityManagement/Opportunity";
 
   constructor(private _httpClient: HttpClient, private http: HttpClient, private AuthenticationService: AuthenticationService) {
 
@@ -68,8 +68,11 @@ export class OpportunityServiceService implements Resolve<any> {
     });
   }
 
-  getOpportunityById(id: number): Observable<Opportunity> {
-    return this._httpClient.get<Opportunity>(`${this.api}/Opportunity/Opportunity/GetById/${id}`, this.httpOptions);
+  getOpportunityById(idOpportunity: number): Observable<Opportunity> {
+    return this._httpClient.get<Opportunity>(`${this.api}/Pi_Mobility/Opportunity/GetById/${idOpportunity}`, this.httpOptions);
+  }
+  getOpportunityByIdUser(idOpportunity: number): Observable<Opportunity> {
+    return this._httpClient.get<Opportunity>(`${this.api}/Pi_Mobility/Opportunity/GetById/${idOpportunity}`, this.httpOptions);
   }
   getSpecialityPercentageData(): Observable<any> {
     return this.http.get(this.api + "/Pi_Mobility/specialityPercentage",this.httpOptions );

@@ -43,15 +43,24 @@ export class CandidacyServiceService implements Resolve<any>{
   }
   sendEmail(idOpportunity: any): Observable<any> {
     if (idOpportunity) {
-      return this._http.post(this.api+`/Condidacy/sendSelectedCandidatesEmailsTest/${idOpportunity}`, {});
+      return this._http.post(this.api+`/Pi_Mobility/Condidacy/sendSelectedCandidatesEmailsTest/${idOpportunity}`, {},this.httpOptions);
     } else {
       console.log("Veuillez sélectionner une opportunité avant d'envoyer l'email.");
       return of(null);
     }
   }
+  createCandidate( candidate: Condidacy, idStudent: string,idOpportunity: number,): Observable<Condidacy> {
+    return this._http.post<Condidacy>(this.api + `/Pi_Mobility/RetreiveCandidacyOppParCode/${idStudent}/${idOpportunity}`, candidate,this.httpOptions);
+  }
   retrieveCandidaciesByCode(code: string): Observable<any[]> {
-    return this._http.get<Opportunity[]>(this.api+'/Pi_Mobility/RetreiveCandidacyOppParCode/${code}',this.httpOptions);
+    if (code) {
 
+      return this._http.get<Opportunity[]>(this.api + `/Pi_Mobility/RetreiveCandidacyOppParCode/${code}`, this.httpOptions);
+    }
+    else   {
+      console.log("Veuillez sélectionner une opportunité avant d'envoyer l'email.");
+      return of(null);
+    }
   }
 
 

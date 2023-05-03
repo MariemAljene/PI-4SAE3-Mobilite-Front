@@ -30,7 +30,6 @@
         <tr>
             <th scope="col">#</th>
             <th scope="col">Titre</th>
-            <th scope="col">Date de début</th>
             <th scope="col">Date de fin</th>
             <th scope="col">Spécialité</th>
             <th scope="col">Capacité</th>
@@ -42,7 +41,6 @@
         <tr *ngFor="let opportunity of opportunities; let i = index">
             <th scope="row">{{ i+1 }}</th>
             <td>{{ opportunity.title }}</td>
-            <td>{{ opportunity.starDate }}</td>
             <td>{{ opportunity.endDate }}</td>
             <td>{{ opportunity.specialite }}</td>
             <td>{{ opportunity.capacity }}</td>
@@ -52,15 +50,16 @@
                     </span>
             </td>
             <td>
-                <button type="button" class="btn btn-sm btn-outline-secondary mr-2" (click)="showUpdateForm(opportunity)">
-                    <i class="fas fa-edit"></i> Modifier
+                <button type="button" class="btn btn-primary btn-fill" (click)="showUpdateForm(opportunity)">
+                    <i class="fa fa-edit"></i></button>
+                <button type="button" class="btn btn-danger btn-fil" (click)="confirmDeleteOpportunity(opportunity.id_Opportunity)">
+                    <i class="fa fa-trash"></i>
                 </button>
-                <button type="button" class="btn btn-sm btn-outline-danger" (click)="confirmDeleteOpportunity(opportunity.id_Opportunity)">
-                    <i class="fas fa-times"></i>
+                <button type="button" class="btn btn-secondary btn-fill" (click)="generateQRCode(opportunity.id_Opportunity)">
+                    <i class="fa fa-qrcode"></i> QR Code
                 </button>
-                <button type="button" class="btn btn-sm btn-outline-warning mr-2" (click)="generateQRCode(opportunity.id_Opportunity)">
-                    <i class="fas fa-qrcode"></i> QR Code
-                </button>
+                <img *ngIf="opportunity.qrCodeImage" [src]="opportunity.qrCodeImage" alt="QR Code">
+
 
             </td>
 
