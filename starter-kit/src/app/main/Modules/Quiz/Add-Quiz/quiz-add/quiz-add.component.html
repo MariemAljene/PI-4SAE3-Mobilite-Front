@@ -1,0 +1,44 @@
+<div class="container">
+    <h1>Créer un quiz</h1>
+    <form (ngSubmit)="onSubmit()" #quizForm="ngForm">
+        <div class="form-group">
+            <label for="name">Nom</label>
+            <input type="text" class="form-control" name="name" id="name" [(ngModel)]="quiz.title" required>
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea class="form-control" name="description" id="description" [(ngModel)]="quiz.description" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="startDate"><i class="bi bi-calendar2-week"></i> Start Date</label>
+            <input type="date" class="form-control" id="startDate" name="startDate" [(ngModel)]="quiz.startDate">
+        </div>
+        <div class="form-group">
+            <label for="endDate"><i class="bi bi-calendar2-week"></i> End Date</label>
+            <input type="date" class="form-control" id="endDate" name="endDate" [(ngModel)]="quiz.endDate">
+        </div>
+        <div class="form-group">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th></th>
+                    <th>ID</th>
+                    <th>Enoncé</th>
+                    <th>Type</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let question of questions">
+                    <td>
+                        <input type="checkbox" name="questionIds" value="{{ question.idQuestion }}" (change)="onQuestionSelected(question.idQuestion, $event.target.checked)">
+                    </td>
+                    <td>{{ question.idQuestion }}</td>
+                    <td>{{ question.content }}</td>
+                    <td>{{ question.point }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="!quizForm.valid || selectedQuestionIds.length == 0">Créer le quiz</button>
+    </form>
+</div>

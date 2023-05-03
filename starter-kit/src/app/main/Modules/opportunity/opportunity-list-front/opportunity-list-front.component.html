@@ -1,0 +1,83 @@
+<head>
+    <style>
+        .card {
+            border: none;
+            box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-text {
+            font-size: 16px;
+            margin-bottom: 0.5rem;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            font-size: 16px;
+        }
+
+        .btn-primary:hover {
+            background-color: #0069d9;
+            border-color: #0062cc;
+        }
+
+        .opportunity-image img {
+            max-width: 100%;
+            max-height: 200px;
+        }
+
+        .opportunity-grid {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .opportunity-item {
+            width: 33.33%;
+            padding: 1rem;
+        }
+
+    </style>
+</head>
+
+<div class="opportunity-grid">
+    <div class="opportunity-item" *ngFor="let opportunity of opportunities">
+        <div class="opportunity-image">
+            <a [routerLink]="['/opportunitiy-id', opportunity.id_Opportunity]">
+                <img src="./assets/images/pages/ListOpportunuty.png" alt="{{ opportunity.title }}">
+            </a>
+        </div>
+        <div class="opportunity-details">
+            <h2>
+                <a [routerLink]="['/opportunitiy-id', opportunity.id_Opportunity]">{{ opportunity.title }}</a>
+            </h2>
+            <p>Date de fin: {{ opportunity.endDate }}</p>
+            <p>Spécialité: {{ opportunity.specialite }}</p>
+            <p>Capacité: {{ opportunity.capacity }}</p>
+            <p>Type: {{ opportunity.type }}</p>
+
+            <p>Statut:
+                <span style="color:{{ (currentDate > opportunity.endDate) ? 'red' : 'green' }}">
+          {{ (currentDate > opportunity.endDate) ? 'Terminée' : 'En cours' }}
+        </span>
+            </p>
+            <p>    <button class="btn btn-primary" (click)="applyForOpportunity(opportunity.id_Opportunity)">Postuler</button>
+            </p>
+        </div>
+    </div>
+</div>

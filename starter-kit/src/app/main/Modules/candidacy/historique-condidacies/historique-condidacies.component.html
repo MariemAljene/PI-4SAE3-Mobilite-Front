@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Historique des candidatures</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #F0F0F0;
+        }
+
+        .container {
+            margin: auto;
+            max-width: 800px;
+            padding: 20px;
+            background-color: #FFFFFF;
+            border: 2px solid transparent;
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .status-in-progress {
+            color: violet;
+        }
+
+        .status-pre-selected {
+            color: orange;
+        }
+
+        .status-accepted {
+            color: green;
+        }
+
+        .status-refused {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Historique de vos candidatures</h2>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Nom de l'opportunité</th>
+            <th>Statut</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let candidacy of candidacyHistory">
+            <td>{{ candidacy.opportunityName }}</td>
+            <td [ngClass]="{
+                'status-in-progress': candidacy.status === 'In_Progress',
+                'status-pre-selected': candidacy.status === 'Pre_Selected',
+                'status-accepted': candidacy.status === 'Accepted',
+                'status-refused': candidacy.status === 'Refused'
+            }">{{ candidacy.status }}</td>
+
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
