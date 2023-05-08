@@ -24,7 +24,7 @@ export class QuizBackComponent implements OnInit {
         this.router.navigate(['/add-quiz']);
       }
       this.viewNotes = () => {
-        this.router.navigate(['/view-notes']);
+        this.router.navigate(['/afficherQuiz']);
       }
 
     }      else              if(this.AuthenticationService.currentUserValue.role[0].roleName=="User" )

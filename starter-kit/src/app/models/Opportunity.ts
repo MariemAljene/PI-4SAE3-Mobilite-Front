@@ -19,4 +19,6 @@ export class Opportunity {
     quizzesQuiz: any;
     averageRating: number;
     numberOfRatings: number;
+    maskedPartnerId?: string;
+    maskedIdOpportunity?:number
 }

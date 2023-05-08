@@ -1,30 +1,48 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 
+<div class="container my-3">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="form-group d-flex">
+                <input type="text" class="form-control" id="code" [(ngModel)]="code">
+                <button class="btn btn-primary align-self-end" (click)="retrieveCandidaciesByCode()">
+                    <i class="bi bi-search"></i>
+                </button>            </div>
+        </div>
+    </div>
 
-<table class="table table-striped">
-    <thead>
-    <tr>
-        <th scope="col">#</th>
-        <th scope="col">Nom de la faculté</th>
-        <th scope="col">Moyenne 1ère année</th>
-        <th scope="col">Moyenne 2ème année</th>
-        <th scope="col">Moyenne 3ème année</th>
-        <th scope="col">Score</th>
-        <th scope="col">Statut</th>
-        <th scope="col"></th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let candidacy of Condidacies; let i = index">
-        <th scope="row">{{ i + 1 }}</th>
-        <td>{{ candidacy.nameFaculte }}</td>
-        <td>{{ candidacy.moyenne_1year }}</td>
-        <td>{{ candidacy.moyenne_2year }}</td>
-        <td>{{ candidacy.moyenne_3year }}</td>
-        <td>{{ candidacy.score }}</td>
-        <td>{{ candidacy.idTable }}</td>
-        <td>
-            <button class="btn btn-primary" (click)="sendEmail(candidacy.idTable)">Envoyer l'e-mail</button>
-        </td>
-    </tr>
-    </tbody>
-</table>
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Opportunity Title</th>
+                        <th scope="col">Moyenne_1year</th>
+                        <th scope="col">Moyenne_2year</th>
+                        <th scope="col">Moyenne_3year</th>
+                        <th scope="col">score</th>
+                        <th scope="col">Status</th>
+                        <th scope="col"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let candidacy of Condidacies; let i = index">
+                        <th scope="row">{{ i + 1 }}</th>
+                        <td>{{ candidacy.nameFaculte }}</td>
+                        <td>{{ candidacy.moyenne_1year }}</td>
+                        <td>{{ candidacy.moyenne_2year }}</td>
+                        <td>{{ candidacy.moyenne_3year }}</td>
+                        <td>{{ candidacy.score }}</td>
+                        <td>{{ candidacy.idTable }}</td>
+                        <td>
+                            <button class="btn btn-primary btn-sm" (click)="sendEmail(candidacy.idTable)">  <i class="bi bi-envelope"></i></button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

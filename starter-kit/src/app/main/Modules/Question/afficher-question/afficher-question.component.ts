@@ -17,15 +17,17 @@ questions:Question[]
   question:Question
   answers:Answers
   constructor(private opportunityService: OpportunityServiceService,private  AfficherQuestionService:AfficherQuestionService,private  AuthenticationService:AuthenticationService ,private router: Router, private _http: HttpClient) {
-  }
-  ngOnInit(): void {
-    this.AfficherQuestionService.getQuestion(this.AuthenticationService.currentUserValue.userName.toString()).subscribe(
-        (questions: Question[]) => {
-          this.questions = questions;
-        },
-        (error: any) => console.log(error)
-    );
-  }
+  }nbPages: number = 0;
+
+    ngOnInit(): void {
+        this.AfficherQuestionService.getQuestion(this.AuthenticationService.currentUserValue.userName.toString()).subscribe(
+            (questions: Question[]) => {
+                this.questions = questions;
+            },
+            (error: any) => console.log(error)
+        );
+    }
+
 
 }
 

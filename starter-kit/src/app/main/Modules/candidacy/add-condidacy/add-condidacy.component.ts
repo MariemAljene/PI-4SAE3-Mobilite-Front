@@ -4,7 +4,7 @@ import {OpportunityServiceService} from "../../opportunity/opportunity-service.s
 import {CandidacyServiceService} from "../candidacy-service.service";
 import {Opportunity} from "../../../../models/Opportunity";
 import {Condidacy} from "../../../../models/Condidacy";
-import {NgForm} from "@angular/forms";
+import {FormBuilder, FormGroup, NgForm, Validators} from "@angular/forms";
 import {AuthenticationService} from "../../../../auth/service";
 
 @Component({
@@ -13,31 +13,71 @@ import {AuthenticationService} from "../../../../auth/service";
   styleUrls: ['./add-condidacy.component.scss']
 })
 export class AddCondidacyComponent implements OnInit {
-  @Input() opportunity: Opportunity;
-  condidacy: Condidacy = new Condidacy();
-   public id_Opportunity: number;
-  constructor(
-      private route: ActivatedRoute,
-      private router: Router,
-      private opportunityService: OpportunityServiceService,
-      private condidacyService: CandidacyServiceService,private authenticationService:AuthenticationService
-  ) { }
 
-    ngOnInit() {
-        const id_Opportunity = +this.route.snapshot.paramMap.get('id_Opportunity');
-        this.opportunityService.getOpportunityById(id_Opportunity).subscribe(opportunity => this.opportunity = opportunity);
+    condidacyForm: FormGroup;
+    idStudent: string;
+    idOpportunity: number;
+
+    @Input() opportunity: Opportunity;
+    public id_Opportunity: number;
+
+
+    Id_Condidacy !: number;
+    moyenne_1year !: number;
+    moyenne_2year !: number;
+    moyenne_3year !: number;
+    score!: number;
+    attempted!: boolean;
+    motivationdescription!: string;
+    status!: number;
+    user!: string;
+    idTable!: number;
+    nameFaculte!: string
+
+
+    constructor(
+        private route: ActivatedRoute,
+        private router: Router,
+        private opportunityService: OpportunityServiceService,
+        private condidacyService: CandidacyServiceService,
+        private authenticationService: AuthenticationService,
+        private formBuilder: FormBuilder,
+    ) {
+        this.condidacy = {
+            Id_Condidacy: null,
+            moyenne_1year: null,
+            moyenne_2year: null,
+            moyenne_3year: null,
+            score: null,
+            attempted: false,
+            motivationdescription: '',
+            status: null,
+            user: '',
+            idTable: null,
+            nameFaculte: ''
+        };
     }
 
-    createCandidacy(condidacyForm: NgForm) {
-        this.condidacyService
-            .createCandidate(
-                this.condidacy,
-                this.authenticationService.currentUserValue.userName.toString(),
-                this.id_Opportunity
-            )
-            .subscribe((result) => {
-                console.log(result);
-                this.router.navigate(['/candidacy']);
-            });
+    ngOnInit(): void {
+
+        this.id_Opportunity = +this.route.snapshot.paramMap.get('id_Opportunity');
+
+
+    }
+
+    @Input() condidacy: Condidacy;
+
+    submitForm(form: NgForm) {
+        const newCondidacy: any = form.value;
+        const idStudent = this.authenticationService.currentUserValue.userName.toString();
+        this.id_Opportunity = +this.route.snapshot.paramMap.get('idOpportunity');
+console.log(this.id_Opportunity);
+        if (!Number.isInteger(this.id_Opportunity)) {
+            console.log('Invalid idOpportunity value: ' +  this.id_Opportunity);
+            return;
+        }
+
+        this.condidacyService.createCandidate(newCondidacy, idStudent, this.id_Opportunity)
+            .subscribe(condidacy => console.log(condidacy));
     }
 }

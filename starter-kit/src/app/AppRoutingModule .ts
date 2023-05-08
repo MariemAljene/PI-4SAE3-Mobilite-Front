@@ -28,6 +28,7 @@ import {QuizBackComponent} from "./main/Modules/Quiz/quiz-back/quiz-back.compone
 import {QuizAddComponent} from "./main/Modules/Quiz/Add-Quiz/quiz-add/quiz-add.component";
 import {AfficherQuestionService} from "./main/Modules/Question/afficher-question/afficher-question.service";
 import {AfficherQuestionComponent} from "./main/Modules/Question/afficher-question/afficher-question.component";
+import {RetreiveQuizezComponent} from "./main/Modules/Quiz/retreive-quizez/retreive-quizez.component";
 
 
 
@@ -70,6 +71,8 @@ const routes: Routes = [
     {path:'Quiz',component:QuizBackComponent},
     {path:'add-quiz',component :QuizAddComponent},
     {path:'afficherQuestion',component:AfficherQuestionComponent},
+    {path:'afficherQuiz',component:RetreiveQuizezComponent},
+
     {path:'add-question',component:AddQuestionComponent},
     {
         path: "**",

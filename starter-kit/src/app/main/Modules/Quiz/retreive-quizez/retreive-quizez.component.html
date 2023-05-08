@@ -1,0 +1,45 @@
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">Title</th>
+        <th scope="col">Description</th>
+        <th scope="col">NB</th>
+
+        <th scope="col">Questions</th>
+        <th scope="col">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let quiz of quizez">
+        <td>{{ quiz.title }}</td>
+        <td>{{ quiz.description }}</td>
+        <td>{{numPagesToPrint}}</td>
+        <td>
+            <ul>
+                <li *ngFor="let question of quiz.questions">
+                    <div class="mb-3">
+                        <h6 class="font-weight-bold">{{ question.content }}</h6>
+                        <img src="{{ question.image }}" style="width: 200px; height: 200px;">
+                        <p class="font-italic">Point: {{ question.point }}</p>
+                        <ul>
+                            <li *ngFor="let answer of question.answers">
+                                {{ answer.content }}
+                                <span *ngIf="answer.correct">
+                                    <i class="fas fa-check"></i>
+                                  </span>
+                                <span *ngIf="!answer.correct">
+                                    <i class="fas fa-times"></i>
+                                  </span>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </td>
+        <td>
+            <button class="btn btn-primary" (click)="generatePdf(quiz)">Generate PDF</button>
+        </td>
+
+    </tr>
+    </tbody>
+</table>

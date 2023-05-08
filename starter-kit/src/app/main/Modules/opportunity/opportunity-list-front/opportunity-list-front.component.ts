@@ -41,8 +41,8 @@ export class OpportunityListFrontComponent implements OnInit {
 
 
   }
-  applyForOpportunity(idOpportunity: number) {
-    this.router.navigate(['/addCondidacy', idOpportunity]);
+  applyForOpportunity(id_Opportunity: number) {
+    this.router.navigate(['/addCondidacy', id_Opportunity]);
   }
 
 }

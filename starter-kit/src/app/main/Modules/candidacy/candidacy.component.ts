@@ -63,8 +63,12 @@ export class CandidacyComponent implements OnInit {
         },
         (error) => {
           console.log("Erreur lors de l'envoi de l'e-mail", error);
+          console.log("URL de la demande:", error.url);
+          console.log("Code d'état:", error.status);
+          console.log("Erreur:", error.error);
         }
     );
   }
+
 
 }

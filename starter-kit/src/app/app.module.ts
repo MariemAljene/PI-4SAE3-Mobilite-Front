@@ -41,6 +41,7 @@ import { HistoriqueCondidaciesComponent } from './main/Modules/candidacy/histori
 import { QuizBackComponent } from './main/Modules/Quiz/quiz-back/quiz-back.component';
 import { QuizAddComponent } from './main/Modules/Quiz/Add-Quiz/quiz-add/quiz-add.component';
 import {AfficherQuestionComponent} from "./main/Modules/Question/afficher-question/afficher-question.component";
+import { RetreiveQuizezComponent } from './main/Modules/Quiz/retreive-quizez/retreive-quizez.component';
 const appRoutes: Routes = [];
 
 @NgModule({
@@ -57,7 +58,8 @@ const appRoutes: Routes = [];
     HistoriqueCondidaciesComponent,
     AfficherQuestionComponent,
     QuizBackComponent,
-    QuizAddComponent,],
+    QuizAddComponent,
+    RetreiveQuizezComponent,],
   imports: [
     CommonModule,
     ContentHeaderModule,

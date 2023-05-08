@@ -5,6 +5,7 @@ import {Opportunity} from "../../../models/Opportunity";
 import {Condidacy} from "../../../models/Condidacy";
 import {ActivatedRouteSnapshot, Resolve, RouterStateSnapshot} from "@angular/router";
 import {environment} from "../../../../environments/environment";
+import {Quiz} from "../../../models/Quiz";
 
 @Injectable({
   providedIn: 'root'
@@ -32,6 +33,8 @@ export class CandidacyServiceService implements Resolve<any>{
       'Authorization': 'Bearer ' + localStorage.getItem('jwtToken')
     })}
 
+
+
   constructor(private _http:HttpClient) { }
 
   getAllCandidacies(): Observable<Condidacy[]> {
@@ -49,8 +52,9 @@ export class CandidacyServiceService implements Resolve<any>{
       return of(null);
     }
   }
-  createCandidate( candidate: Condidacy, idStudent: string,idOpportunity: number,): Observable<Condidacy> {
-    return this._http.post<Condidacy>(this.api + `/Pi_Mobility/Condidacy/CreateNew/${idStudent}/${idOpportunity}`, candidate,this.httpOptions);
+  createCandidate( candidate: Condidacy, idStudent: string,id_Opportunity: number): Observable<Condidacy> {
+    console.log(id_Opportunity);
+    return this._http.post<Condidacy>(this.api+`/Pi_Mobility/Condidacy/CreateNew/${idStudent}/${id_Opportunity}`,candidate,this.httpOptions);
   }
   retrieveCandidaciesByCode(code: string): Observable<any[]> {
     if (code) {

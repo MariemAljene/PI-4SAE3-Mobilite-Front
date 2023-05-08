@@ -38,4 +38,5 @@ export class AfficherQuestionService  implements  Resolve<any>  {
     return this._httpClient.get<Question[]>(`${this.api}/Pi_Mobility/Retreive_Questions/${id_User}`, this.httpOptions);
   }
 
+
 }

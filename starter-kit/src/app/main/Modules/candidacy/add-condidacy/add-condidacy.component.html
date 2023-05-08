@@ -1,19 +1,85 @@
-<form #condidacyForm="ngForm" (ngSubmit)="createCandidacy(condidacyForm)">
-    <div class="form-group">
-        <label for="moyenne_1year">Moyenne 1ère année :</label>
-        <input type="number" class="form-control" id="moyenne_1year" name="moyenne_1year" ngModel required>
-    </div>
-    <div class="form-group">
-        <label for="moyenne_2year">Moyenne 2ème année :</label>
-        <input type="number" class="form-control" id="moyenne_2year" name="moyenne_2year" ngModel required>
-    </div>
-    <div class="form-group">
-        <label for="moyenne_3year">Moyenne 3ème année :</label>
-        <input type="number" class="form-control" id="moyenne_3year" name="moyenne_3year" ngModel required>
-    </div>
-    <div class="form-group">
-        <label for="motivationdescription">Description de la motivation :</label>
-        <textarea class="form-control" id="motivationdescription" name="motivationdescription" ngModel required></textarea>
-    </div>
-    <button type="submit" class="btn btn-primary" (click)="createCandidacy(condidacyForm)">Postuler</button>
-</form>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Formulaire de candidature</title>
+    <style>
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 50px;
+        }
+
+        form {
+            width: 50%;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="number"],
+        textarea {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 100%;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        textarea {
+            height: 150px;
+        }
+
+        button[type="submit"] {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0069d9;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Apply For The Opportunity</h2>
+    <form #condidacyForm="ngForm" (ngSubmit)="submitForm(condidacyForm)">
+        <div class="form-group">
+            <label for="moyenne_1year">Moyenne de première année</label>
+            <input type="number" class="form-control" id="moyenne_1year" name="moyenne_1year" [(ngModel)]="condidacy.moyenne_1year" placeholder="Ex: 15.5" required>
+        </div>
+        <div class="form-group">
+            <label for="moyenne_2year">Moyenne de deuxième année</label>
+            <input type="number" class="form-control" id="moyenne_2year" name="moyenne_2year" [(ngModel)]="condidacy.moyenne_2year" placeholder="Ex: 16.2" required>
+        </div>
+        <div class="form-group">
+            <label for="moyenne_3year">Moyenne de troisième année</label>
+            <input type="number" class="form-control" id="moyenne_3year" name="moyenne_3year" [(ngModel)]="condidacy.moyenne_3year" placeholder="Ex: 14.8" required>
+        </div>
+        <div class="form-group">
+            <label for="motivationdescription">Description de votre motivation</label>
+            <textarea class="form-control" id="motivationdescription" name="motivationdescription" [(ngModel)]="condidacy.motivationdescription" placeholder="Expliquez brièvement pourquoi vous souhaitez postuler." required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Envoyer</button>
+    </form>
+</div>
+</body>
+</html>

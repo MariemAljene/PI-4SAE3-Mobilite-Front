@@ -1,29 +1,99 @@
-<form (ngSubmit)="ajouterQuestion(question)">
-    <div class="form-group">
-        <label>Question</label>
-        <input type="text" class="form-control" [(ngModel)]="question.content" name="content" required>
-    </div>
-    <div class="form-group">
-        <label>Speciality</label>
-        <input type="text" class="form-control" [(ngModel)]="question.Speciality" name="Speciality" required>
-    </div>
-    <div class="form-group">
-        <label>Image</label>
-        <input type="file" class="form-control-file" (change)="onFileSelected($event)" accept="image/*">
-    </div>
-    <div class="form-group">
-        <label>Point</label>
-        <input type="number" class="form-control" [(ngModel)]="question.point" name="point" required>
-    </div>
-    <div class="form-group">
-        <label>Answers</label>
-        <div *ngFor="let answer of question.answers; let i=index" class="form-group">
-            <input type="text" class="form-control" [(ngModel)]="answer.content" name="answer{{i}}" required>
-            <div class="form-check">
-                <input type="checkbox" class="form-check-input" [(ngModel)]="answer.correct" name="correct{{i}}" id="correct{{i}}">
-                <label class="form-check-label" for="correct{{i}}">Correct</label>
-            </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+
+    <style>
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-check-label {
+            position: relative;
+            padding-left: 1.5rem;
+            cursor: pointer;
+        }
+
+        .form-check-label:before {
+            content: "";
+            display: inline-block;
+            position: absolute;
+            left: 0;
+            width: 1rem;
+            height: 1rem;
+            margin-top: 0.2rem;
+            border: 1px solid #bbb;
+            background-color: #fff;
+        }
+
+        .form-check-input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .form-check-input:checked ~ .form-check-label:before {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .form-check-input:focus ~ .form-check-label:before {
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+        }
+
+        .form-check-input:disabled ~ .form-check-label:before {
+            background-color: #e9ecef;
+            cursor: not-allowed;
+        }
+
+        .form-check-input:disabled ~ .form-check-label {
+            color: #6c757d;
+        }
+
+        .form-check-input:disabled ~ .form-check-label:before {
+            border-color: #ccc;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <form (ngSubmit)="ajouterQuestion(question)" class="border p-3">
+                <div class="form-group">
+                    <label for="content">Question</label>
+                    <input type="text" class="form-control" [(ngModel)]="question.content" name="content" id="content" required>
+                </div>
+                <div class="form-group">
+                    <label for="Speciality">Speciality</label>
+                    <input type="text" class="form-control" [(ngModel)]="question.Speciality" name="Speciality" id="Speciality" required>
+                </div>
+                <div class="form-group">
+                    <label for="image">Image</label>
+                    <input type="file" class="form-control-file" (change)="onFileSelected($event)" accept="image/*" id="image">
+                </div>
+                <div class="form-group">
+                    <label for="point">Point</label>
+                    <input type="number" class="form-control" [(ngModel)]="question.point" name="point" id="point" required>
+                </div>
+                <div class="form-group">
+                    <label for="answers">Answers</label>
+                    <div *ngFor="let answer of question.answers; let i=index" class="form-group">
+                        <input type="text" class="form-control" [(ngModel)]="answer.content" name="answer{{i}}" id="answer{{i}}" required>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" [(ngModel)]="answer.correct" name="correct{{i}}" id="correct{{i}}">
+                            <label class="form-check-label" for="correct{{i}}">Correct</label>
+
+
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Ajouter</button>
+            </form>
         </div>
     </div>
-    <button type="submit" class="btn btn-primary">Ajouter</button>
-</form>
+</div>
+</body>
+</html>

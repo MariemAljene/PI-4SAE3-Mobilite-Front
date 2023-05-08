@@ -4,6 +4,7 @@ import {AfficherQuestionService} from "../../../Question/afficher-question/affic
 import {AuthenticationService} from "../../../../../auth/service";
 import {Quiz} from "../../../../../models/Quiz";
 import {Question} from "../../../../../models/Question";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-quiz-add',
@@ -12,7 +13,7 @@ import {Question} from "../../../../../models/Question";
 })
 export class QuizAddComponent implements OnInit {
 
-  constructor(private  QuizServiceService:QuizServiceService,private  AfficherQuestionService:AfficherQuestionService,private  AuthenticationService:AuthenticationService  ) { }
+  constructor(private  QuizServiceService:QuizServiceService,private  AfficherQuestionService:AfficherQuestionService,private  AuthenticationService:AuthenticationService,private router: Router  ) { }
 
 
   ngOnInit() {
@@ -40,9 +41,12 @@ export class QuizAddComponent implements OnInit {
     questions: Question[] = [];
     selectedQuestionIds: number[] = [];
   onSubmit() {
-    this.QuizServiceService.ajouterQuiz(this.quiz, this.selectedQuestionIds, 1).subscribe(
+    this.QuizServiceService.ajouterQuiz(this.quiz, this.selectedQuestionIds, 10
+    ).subscribe(
         () => {
           console.log('Quiz ajouté avec succès !');
+          this.router.navigate(['/afficherQuiz']);
+
         },
         (error) => {
           console.log(error);

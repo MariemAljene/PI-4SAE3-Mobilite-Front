@@ -64,8 +64,6 @@ export class OpportunityComponent implements OnInit {
             });
             this.opportunityService.getOpportunityById(this.opportunityId).subscribe(opportunity => {
                 this.opportunity1 = opportunity;
-                this.title = opportunity.title;
-                this.capacity = opportunity.capacity;
             });
         }      else              if(this.AuthenticationService.currentUserValue.role[0].roleName=="User" )
         {
@@ -119,6 +117,16 @@ export class OpportunityComponent implements OnInit {
 
     edit(opportunity: any){
         this.opportunityToUpdate = opportunity;
+    }
+    updateJournal(){
+        this.opportunityService.updateOpportunity(this.opportunityToUpdate,).subscribe(
+            (resp) => {
+                console.log(resp);
+            },
+            (err) => {
+                console.log(err);
+            }
+        );
     }
 
 

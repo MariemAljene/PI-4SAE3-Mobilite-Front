@@ -26,6 +26,21 @@ export class HistoriqueCondidaciesComponent implements OnInit {
           console.log(error);
         }
     );
-  }
+  } id_Quiz: number;
+    id_Condidacy: number;
+    quizAttempt: any;
+    startQuizAttempt(): void {
+        this.HistoriqueCondidaciesService.startQuizAttempt(this.id_Quiz, this.id_Condidacy, this.HistoriqueCondidaciesService.getQuizIdByCondidacyId(this.id_Condidacy))
+            .subscribe(
+                response => {
+                    console.log(response);
+                    // traitez la réponse si nécessaire
+                },
+                error => {
+                    console.log(error);
+                    // gérez l'erreur si nécessaire
+                }
+            );
+    }
 
 }

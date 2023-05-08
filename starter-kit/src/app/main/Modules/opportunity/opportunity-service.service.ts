@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
+import {HttpClient, HttpErrorResponse, HttpHeaders, HttpParams} from "@angular/common/http";
 import {Observable, throwError} from "rxjs";
 import {Opportunity} from "../../../models/Opportunity";
 import {environment} from "../../../../environments/environment";
@@ -46,9 +46,10 @@ export class OpportunityServiceService implements Resolve<any> {
     return this._httpClient.get<Opportunity[]>(this.api + '/Opportunity/Opportunity/GetAll', this.httpOptions);
   }
 
-  public updateOpportunity(opportunity: any) {
-    return this._httpClient.put(this.api + '/Update', opportunity);
+  public updateOpportunity(opportunity: Opportunity): Observable<any> {
+    return this._httpClient.put(this.api + '/Pi_Mobility/Opportunity/Update', opportunity, this.httpOptions);
   }
+
 
   public deleteOpportunity(id: any) {
     if (id === undefined) {
@@ -68,8 +69,8 @@ export class OpportunityServiceService implements Resolve<any> {
     });
   }
 
-  getOpportunityById(idOpportunity: number): Observable<Opportunity> {
-    return this._httpClient.get<Opportunity>(`${this.api}/Pi_Mobility/Opportunity/GetById/${idOpportunity}`, this.httpOptions);
+  getOpportunityById(id_Opportunity: number): Observable<Opportunity> {
+    return this._httpClient.get<Opportunity>(`${this.api}/Pi_Mobility/Opportunity/GetById/${id_Opportunity}`, this.httpOptions);
   }
   getOpportunityByIdUser(idOpportunity: number): Observable<Opportunity> {
     return this._httpClient.get<Opportunity>(`${this.api}/Pi_Mobility/Opportunity/GetById/${idOpportunity}`, this.httpOptions);
