@@ -8,6 +8,7 @@ import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 import {Observable} from "rxjs";
 import {map} from "rxjs/operators";
 import {AuthenticationService} from "../../../auth/service";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 (pdfMake as any).vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
@@ -33,9 +34,17 @@ export class OpportunityComponent implements OnInit {
 
     }
     opportunity: Opportunity
+form:FormGroup;
+    constructor(private opportunityService: OpportunityServiceService,private  AuthenticationService:AuthenticationService ,private router: Router, private _http: HttpClient,private formBuilder:FormBuilder)
+    {
+        this.form = this.formBuilder.group({
+            endDate: ['', Validators.required],
 
-    constructor(private opportunityService: OpportunityServiceService,private  AuthenticationService:AuthenticationService ,private router: Router, private _http: HttpClient) {
+        });
     }
+
+
+
 
     opportunities: Opportunity[];
 
@@ -115,19 +124,19 @@ export class OpportunityComponent implements OnInit {
 
 
 
-    edit(opportunity: any){
-        this.opportunityToUpdate = opportunity;
-    }
-    updateJournal(){
-        this.opportunityService.updateOpportunity(this.opportunityToUpdate,).subscribe(
-            (resp) => {
-                console.log(resp);
-            },
-            (err) => {
-                console.log(err);
-            }
-        );
-    }
+
+
+onSubmit(): void {
+    this.opportunityService.updateOpportunity(this.opportunityId, this.form.value).subscribe(
+        data => {
+            console.log(data);
+            this.router.navigate(['list_opportunity']);
+        },
+        error => {
+            console.log(error);
+        }
+    );
+}
 
 
 

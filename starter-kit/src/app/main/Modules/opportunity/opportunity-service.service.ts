@@ -46,8 +46,8 @@ export class OpportunityServiceService implements Resolve<any> {
     return this._httpClient.get<Opportunity[]>(this.api + '/Opportunity/Opportunity/GetAll', this.httpOptions);
   }
 
-  public updateOpportunity(opportunity: Opportunity): Observable<any> {
-    return this._httpClient.put(this.api + '/Pi_Mobility/Opportunity/Update', opportunity, this.httpOptions);
+  public updateOpportunity(id_Opportunity:any,opportunity: Opportunity): Observable<any> {
+    return this._httpClient.put(this.api + '/Pi_Mobility/Opportunity/UpdateOPP/'+id_Opportunity, opportunity, this.httpOptions);
   }
 
 

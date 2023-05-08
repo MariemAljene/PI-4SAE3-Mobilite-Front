@@ -29,6 +29,7 @@ import {QuizAddComponent} from "./main/Modules/Quiz/Add-Quiz/quiz-add/quiz-add.c
 import {AfficherQuestionService} from "./main/Modules/Question/afficher-question/afficher-question.service";
 import {AfficherQuestionComponent} from "./main/Modules/Question/afficher-question/afficher-question.component";
 import {RetreiveQuizezComponent} from "./main/Modules/Quiz/retreive-quizez/retreive-quizez.component";
+import {UpdateOpportunityComponent} from "./main/Modules/opportunity/update-opportunity/update-opportunity.component";
 
 
 
@@ -72,7 +73,7 @@ const routes: Routes = [
     {path:'add-quiz',component :QuizAddComponent},
     {path:'afficherQuestion',component:AfficherQuestionComponent},
     {path:'afficherQuiz',component:RetreiveQuizezComponent},
-
+    {path:'update_opportunity/:id_Opportunity',component:UpdateOpportunityComponent} ,
     {path:'add-question',component:AddQuestionComponent},
     {
         path: "**",

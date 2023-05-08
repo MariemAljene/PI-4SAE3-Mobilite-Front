@@ -39,9 +39,9 @@
             </td>
             <td>
                 <div class="d-flex justify-content-center">
-                    <button type="button" class="btn btn-primary me-2" (click)="showUpdateForm(opportunity)">
-                        <i class="fa fa-edit"></i>
-                    </button>
+
+                    <button type="button" class="btn btn-primary btn-fill" [routerLink]="['/update_opportunity', opportunity.id_Opportunity]" ><i class="fa fa-edit"></i></button>
+
                     <button type="button" class="btn btn-danger me-2" (click)="confirmDeleteOpportunity(opportunity.id_Opportunity)">
                         <i class="fa fa-trash"></i>
                     </button>
@@ -58,19 +58,3 @@
     </table>
 </div>
 
-<div *ngIf="selectedOpportunity">
-    <form #f="ngForm">
-        <div class="form-group">
-            <label for="id_Opportunity"> id_Opportunity :</label>
-            <input type="number" disabled #id_Opportunity [(ngModel)]="OpportunityToUpdate.id_Opportunity" name="id_Opportunity" id="id_Opportunity"
-                   class="form-control" placeholder="id_Opportunity">
-        </div>
-        <div ></div>
-        <div class="form-group">
-            <label for="endDate">Date de fin:</label>
-            <input type="date" class="form-control" id="endDate" [(ngModel)]="OpportunityToUpdate.endDate" name="endDate" required>
-        </div>
-
-        <button type="submit" class="btn btn-primary" (click)="updateJournal()">Enregistrer</button>
-    </form>
-</div>
