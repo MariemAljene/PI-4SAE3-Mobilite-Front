@@ -27,6 +27,9 @@ export class QuizBackComponent implements OnInit {
         this.router.navigate(['/afficherQuiz']);
       }
 
+
+
+
     }      else              if(this.AuthenticationService.currentUserValue.role[0].roleName=="User" )
     {
       this.router.navigate(['/OpportunityList']);
@@ -44,5 +47,10 @@ export class QuizBackComponent implements OnInit {
   viewNotes() {
     // Méthode pour voir les notes
   }
+  QuizResult() {
+    this.router.navigate(['/QuizResult']);
+  }
+
+
 
 }

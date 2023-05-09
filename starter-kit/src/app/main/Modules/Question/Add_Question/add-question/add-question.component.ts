@@ -30,7 +30,7 @@ export class AddQuestionComponent implements OnInit {
         { answerText: this.answer3Text }
       ]
     };
-    const userId = this.AuthenticationService.currentUserValue.userName.toString(); // remplacer par l'identifiant de l'utilisateur connecté
+    const userId = this.AuthenticationService.currentUserValue.userName.toString();
 
     this.http.post(`/Quiz/question/${userId}`, question).subscribe(
         () => alert('Question ajoutée avec succès'),

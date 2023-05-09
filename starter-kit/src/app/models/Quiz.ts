@@ -1,4 +1,5 @@
 import {Question} from "./Question";
+import {Opportunity} from "./Opportunity";
 
 export class Quiz {
     id_Quiz:number;
@@ -8,5 +9,6 @@ export class Quiz {
     startDate:Date;
     endDate:Date;
     questions:Question[];
+    oppotunity:Opportunity;
 
 }

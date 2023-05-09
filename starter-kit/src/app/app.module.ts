@@ -43,6 +43,7 @@ import { QuizAddComponent } from './main/Modules/Quiz/Add-Quiz/quiz-add/quiz-add
 import {AfficherQuestionComponent} from "./main/Modules/Question/afficher-question/afficher-question.component";
 import { RetreiveQuizezComponent } from './main/Modules/Quiz/retreive-quizez/retreive-quizez.component';
 import {UpdateOpportunityComponent} from "./main/Modules/opportunity/update-opportunity/update-opportunity.component";
+import { QuizResultComponent } from './main/Modules/Quiz/quiz-result/quiz-result.component';
 const appRoutes: Routes = [];
 
 @NgModule({
@@ -61,7 +62,8 @@ const appRoutes: Routes = [];
     QuizBackComponent,
     QuizAddComponent,
     RetreiveQuizezComponent,
-    UpdateOpportunityComponent,],
+    UpdateOpportunityComponent,
+    QuizResultComponent,],
   imports: [
     CommonModule,
     ContentHeaderModule,

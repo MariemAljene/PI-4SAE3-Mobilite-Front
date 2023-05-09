@@ -18,6 +18,13 @@
             <input type="date" class="form-control" id="endDate" name="endDate" [(ngModel)]="quiz.endDate">
         </div>
         <div class="form-group">
+            <label for="opportunity">Opportunité</label>
+            <select class="form-control" id="opportunity" name="opportunity" [(ngModel)]="quiz.oppotunity" required (change)="onOpportunitySelected($event.target.value)">
+                <option *ngFor="let opportunity of opportunities" [value]="opportunity.id_Opportunity">{{opportunity.title}}</option>
+            </select>
+        </div>
+
+        <div class="form-group">
             <table class="table">
                 <thead>
                 <tr>

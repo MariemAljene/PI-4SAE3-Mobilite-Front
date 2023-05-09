@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {Observable, of} from "rxjs";
+import {Observable, of, throwError} from "rxjs";
 import {Opportunity} from "../../../models/Opportunity";
 import {Condidacy} from "../../../models/Condidacy";
 import {ActivatedRouteSnapshot, Resolve, RouterStateSnapshot} from "@angular/router";
 import {environment} from "../../../../environments/environment";
 import {Quiz} from "../../../models/Quiz";
+import {catchError} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -59,13 +60,24 @@ export class CandidacyServiceService implements Resolve<any>{
   retrieveCandidaciesByCode(code: string): Observable<any[]> {
     if (code) {
 
-      return this._http.get<Opportunity[]>(this.api + `/Pi_Mobility/RetreiveCandidacyOppParCode/${code}`, this.httpOptions);
+      return this._http.get<Opportunity[]>(this.api+`/Pi_Mobility/RetreiveCandidacyOppParCode/${code}`, this.httpOptions);
     }
     else   {
       console.log("Veuillez sélectionner une opportunité avant d'envoyer l'email.");
       return of(null);
     }
   }
+  public updateCondidacy(id_Condidacy:any,condidacy:Condidacy):Observable<any> {
+    console.log(id_Condidacy);
+    return this._http.put(this.api +'/Pi_Mobility/Condidacy/UpdateCon/'+id_Condidacy,condidacy, this.httpOptions)
+        .pipe(
+            catchError((error: any) => {
+              console.log('Error occurred:', error);
+              return throwError(error);
+            })
+        );
+  }
+
 
 
 }

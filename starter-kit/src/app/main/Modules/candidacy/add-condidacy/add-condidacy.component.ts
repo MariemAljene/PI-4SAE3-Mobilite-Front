@@ -43,19 +43,7 @@ export class AddCondidacyComponent implements OnInit {
         private authenticationService: AuthenticationService,
         private formBuilder: FormBuilder,
     ) {
-        this.condidacy = {
-            Id_Condidacy: null,
-            moyenne_1year: null,
-            moyenne_2year: null,
-            moyenne_3year: null,
-            score: null,
-            attempted: false,
-            motivationdescription: '',
-            status: null,
-            user: '',
-            idTable: null,
-            nameFaculte: ''
-        };
+
     }
 
     ngOnInit(): void {

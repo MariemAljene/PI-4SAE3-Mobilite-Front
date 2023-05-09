@@ -30,6 +30,7 @@ import {AfficherQuestionService} from "./main/Modules/Question/afficher-question
 import {AfficherQuestionComponent} from "./main/Modules/Question/afficher-question/afficher-question.component";
 import {RetreiveQuizezComponent} from "./main/Modules/Quiz/retreive-quizez/retreive-quizez.component";
 import {UpdateOpportunityComponent} from "./main/Modules/opportunity/update-opportunity/update-opportunity.component";
+import {QuizResultComponent} from "./main/Modules/Quiz/quiz-result/quiz-result.component";
 
 
 
@@ -75,6 +76,7 @@ const routes: Routes = [
     {path:'afficherQuiz',component:RetreiveQuizezComponent},
     {path:'update_opportunity/:id_Opportunity',component:UpdateOpportunityComponent} ,
     {path:'add-question',component:AddQuestionComponent},
+    {path:'QuizResult',component:QuizResultComponent},
     {
         path: "**",
         redirectTo: "/pages/miscellaneous/error", //Error 404 - Page not found

@@ -18,28 +18,24 @@
                     <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Opportunity Title</th>
-                        <th scope="col">Moyenne_1year</th>
-                        <th scope="col">Moyenne_2year</th>
-                        <th scope="col">Moyenne_3year</th>
-                        <th scope="col">score</th>
-                        <th scope="col">Status</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Note</th>
+
                         <th scope="col"></th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr *ngFor="let candidacy of Condidacies; let i = index">
                         <th scope="row">{{ i + 1 }}</th>
-                        <td>{{ candidacy.nameFaculte }}</td>
-                        <td>{{ candidacy.moyenne_1year }}</td>
-                        <td>{{ candidacy.moyenne_2year }}</td>
-                        <td>{{ candidacy.moyenne_3year }}</td>
-                        <td>{{ candidacy.score }}</td>
-                        <td>{{ candidacy.status }}</td>
+                        <td>{{ candidacy.user.userName }}</td>
                         <td>
-                            <button class="btn btn-primary btn-sm" (click)="sendEmail(candidacy.idTable)">  <i class="bi bi-envelope"></i></button>
+                            <input type="text" class="form-control" [(ngModel)]="candidacy.quizResult">
+                        </td>
+                        <td>
+                            <button class="btn btn-primary" (click)="updateCandidacy(candidacy.id_Condidacy,candidacy)">Save</button>
                         </td>
                     </tr>
+
                     </tbody>
                 </table>
             </div>
