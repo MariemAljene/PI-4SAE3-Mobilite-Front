@@ -1,17 +1,28 @@
-<app-topbar></app-topbar>
+<!-- vertical-layout -->
+<ng-container *ngIf="coreConfig.layout.type === 'vertical'">
+  <vertical-layout></vertical-layout>
+</ng-container>
+<!-- / vertical-layout -->
 
-<app-nav></app-nav>
-<app-carousel></app-carousel>
-<app-team></app-team>
-<app-blog></app-blog>
+<!-- horizontal-layout -->
+<ng-container *ngIf="coreConfig.layout.type === 'horizontal'">
+  <horizontal-layout></horizontal-layout>
+</ng-container>
+<!-- / horizontal-layout -->
 
-<app-about></app-about>
-
-<app-full-search></app-full-search>
-<app-facts></app-facts>
-<app-footer></app-footer>
-
-<!-- Back to Top -->
-<a href="#" class="btn btn-lg btn-primary btn-lg-square rounded back-to-top"><i class="bi bi-arrow-up"></i></a>
-<router-outlet></router-outlet>
-
+<!-- theme customizer -->
+<core-sidebar
+  name="themeCustomizer"
+  class="customizer d-none d-md-block"
+  [invisibleOverlay]="true"
+  *ngIf="coreConfig.layout.customizer"
+>
+  <a
+    class="customizer-toggle d-flex align-items-center justify-content-center"
+    (click)="toggleSidebar('themeCustomizer')"
+  >
+    <span [data-feather]="'settings'" [class]="'spinner'"></span>
+  </a>
+  <core-theme-customizer></core-theme-customizer>
+</core-sidebar>
+<!-- / theme customizer -->
