@@ -1,0 +1,25 @@
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Opportunity Title</th>
+        <th scope="col">Moyenne_1year</th>
+        <th scope="col">Moyenne_2year</th>
+        <th scope="col">Moyenne_3year</th>
+        <th scope="col">score</th>
+        <th scope="col">Status</th>
+        <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let question of questions; let i = index">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ question.content }}</td>
+        <td>{{ question.image }}</td>
+        <td>{{ question.point }}</td>
+        <td>{{ question.answers }}</td>
+
+
+    </tr>
+    </tbody>
+</table>
