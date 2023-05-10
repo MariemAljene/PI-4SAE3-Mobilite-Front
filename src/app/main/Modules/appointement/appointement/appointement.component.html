@@ -1,0 +1,211 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+    <div class="container-fluid">
+      <div class="header-body">
+        <!-- Card stats -->
+        <div class="row"></div>
+      </div>
+    </div>
+  </div>
+  <!-- Page content -->
+  <div class="container-fluid mt--7">
+    <!-- Table -->
+    <!-- Dark table -->
+    <div>
+      <i class="fas fa-check-circle mr-2"></i>
+      <strong>Succès!</strong> 
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  
+    <div class="row">
+      <div class="col">
+        <div class="card bg-default shadow mb-5">
+          <div class="card-header bg-transparent border-0">
+            <h3 class="text-white mb-0">Appointement</h3>
+          
+          <div class="table-responsive">
+            <table class="table align-items-center table-dark table-flush">
+              <thead class="thead-dark">
+                <tr>
+                        <th scope="col" class="sort" data-sort="name">firstname</th>
+                        <th scope="col" class="sort" data-sort="name">lastname</th>
+                        <th scope="col" class="sort" data-sort="name">email</th>
+                        <th scope="col" class="sort" data-sort="name">PhoneNumber</th>
+                        <th scope="col" class="sort" data-sort="name">dateDemande</th>
+                        <th scope="col" class="sort" data-sort="name">dateRdv</th>
+                        <th scope="col" class="sort" data-sort="name">status</th>
+
+
+                        <th scope="col" class="sort" data-sort="name">Select</th>
+
+
+
+
+                
+  
+  
+                        <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody class="list">
+  
+                  <tr *ngFor="let universite of appointments">
+                    <td>
+                      {{universite.firstname}}
+                    </td>
+                    <td>
+                      {{universite.lastname}}
+                    </td>
+                    <td>
+                        {{universite.email}}
+                      </td>
+                      <td>
+                        {{universite.phoneNumber}}
+                      </td>
+                      <td>
+                        {{universite.dateDemande}}
+                      </td>
+                      <td>
+                      {{universite.dateRdv}}
+                    </td>
+                    <td>
+                        {{universite.status}}
+                      </td>
+                      <td><input type="checkbox" [(ngModel)]="universite.selected"></td>
+
+  
+  
+                      <td>
+                        <div class="dropdown">
+                          <a class="btn btn-sm btn-icon-only " style="color: rgb(31, 29, 29);" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-ellipsis-v"></i>
+                          </a>
+                          <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                          
+                            <a class="dropdown-item" (click)="deleteUniv(universite.idAppointement,i)">Delete</a>
+                            <a class="dropdown-item" data-toggle="modal" data-target="#update" (click)="showFormUpdate(universite)">Update</a>
+                          </div>
+                        </div>
+                      </td>
+  
+                    </tr>
+                </tbody>
+            </table>
+       </div>
+      </div>
+      <div class="text-center my-2">
+  
+
+      <button type="button" class="btn btn-success" style="width: 25vw;"  (click)="convertSelectedAppointments()" data-target="#exampleModal">
+        Send to historique
+      </button>
+      <button type="button" class="btn btn-success" style="width: 25vw;" data-toggle="modal" data-target="#exampleModal">
+        Add appointment
+      </button>
+      <button (click)="generateExcel()">Generate Excel</button>
+
+      <button (click)="goToCalendar()">Go to Calendar</button>
+      </div>
+      <div class="notifications">
+        <div *ngFor="let notification of notifications" class="notification alert alert-success alert-dismissible" [ngClass]="className(notification)">
+          <ng-container *ngTemplateOutlet="notificationTpl;context:{notification:notification}"></ng-container>
+        </div>
+      </div>
+      
+      <ng-template #notificationTpl let-notification="notification">
+      
+        <div class="title" fxLayout="row" fxLayoutAlign="space-between center">
+          <div>{{notification.title}}</div>
+          <button mat-icon-button 
+                  (click)="close(notification)"
+                  matTooltip="Close the notification"
+                  matTooltipPosition="before">
+              <mat-icon>cancel</mat-icon>
+            </button>
+        </div>
+      
+        <div class="message">{{notification.message}}</div>
+      
+      </ng-template>
+      
+  
+  
+    </div>
+  
+  
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add appointment</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form #f="ngForm">
+                  <div class="form-group">
+                      <label for="example-text-input" class="form-control-label">First name</label>
+                      <input class="form-control" type="text" required minlength="3" name="nomUniv" [(ngModel)]="univ.firstname"  #t="ngModel"  >
+                      <div *ngIf="t.invalid">
+                        <app-errors [validator]="t"></app-errors>
+                        </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="example-text-input" class="form-control-label">Last name</label>
+                    <input class="form-control" type="text" required minlength="3" name="first" [(ngModel)]="univ.lastname"  #t="ngModel"  >
+                    <div *ngIf="t.invalid">
+                      <app-errors [validator]="t"></app-errors>
+                      </div>
+                </div>
+                <div class="form-group">
+                    <label for="example-text-input" class="form-control-label">Email</label>
+                    <input class="form-control" type="text" required minlength="3" name="last" [(ngModel)]="univ.email" #t="ngModel"  >
+                    <div *ngIf="t.invalid">
+                      <app-errors [validator]="t"></app-errors>
+                      </div>
+                </div>
+                <div class="form-group">
+                    <label for="example-text-input" class="form-control-label">Phone Number</label>
+                    <input class="form-control" type="number" required minlength="3" name="number" [(ngModel)]="univ.phoneNumber"  #t="ngModel"  >
+                    <div *ngIf="t.invalid">
+                      <app-errors [validator]="t"></app-errors>
+                      </div>
+                </div>
+                   <div class="form-group">
+                    <label class="form-control-label">Date de demande</label>
+                    <input class="form-control" type="date" name="dateDemande" [(ngModel)]="univ.dateDemande" #t="ngModel">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-control-label">Date de RDV</label>
+                    <input class="form-control" type="date" name="dateRdv" [(ngModel)]="univ.dateRdv" #t="ngModel">
+                </div>
+                <div class="form-group">
+                    <label for="example-text-input" class="form-control-label">Last name</label>
+                    <input class="form-control" type="text" required minlength="3" name="status" [(ngModel)]="univ.status"  #t="ngModel"  >
+                    <div *ngIf="t.invalid">
+                      <app-errors [validator]="t"></app-errors>
+                      </div>
+                </div>
+        
+                </form>
+              </div>
+              
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="ajouterUniv()">Ajouter</button>
+               <!-- appointment.component.html -->
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="show">
+        <app-edit [univ]="singleUniv"></app-edit>
+      </div>
+  
+  </div>

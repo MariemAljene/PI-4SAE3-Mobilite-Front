@@ -1,0 +1,67 @@
+<!-- Modal -->
+<div class="modal fade" id="update" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modifier une université</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form #f="ngForm">
+                <div class="form-group">
+                    <label for="example-text-input" class="form-control-label">First name</label>
+                    <input class="form-control" type="text" required minlength="3" name="nomUniv" [(ngModel)]="univ.firstname"  #t="ngModel"  >
+                    <div *ngIf="t.invalid">
+                      <app-errors [validator]="t"></app-errors>
+                      </div>
+                </div>
+                <div class="form-group">
+                  <label for="example-text-input" class="form-control-label">Last name</label>
+                  <input class="form-control" type="text" required minlength="3" name="first" [(ngModel)]="univ.lastname"  #t="ngModel"  >
+                  <div *ngIf="t.invalid">
+                    <app-errors [validator]="t"></app-errors>
+                    </div>
+              </div>
+              <div class="form-group">
+                  <label for="example-text-input" class="form-control-label">Last name</label>
+                  <input class="form-control" type="text" required minlength="3" name="last" [(ngModel)]="univ.email" #t="ngModel"  >
+                  <div *ngIf="t.invalid">
+                    <app-errors [validator]="t"></app-errors>
+                    </div>
+              </div>
+              <div class="form-group">
+                  <label for="example-text-input" class="form-control-label">Last name</label>
+                  <input class="form-control" type="number" required minlength="3" name="number" [(ngModel)]="univ.phoneNumber"  #t="ngModel"  >
+                  <div *ngIf="t.invalid">
+                    <app-errors [validator]="t"></app-errors>
+                    </div>
+              </div>
+                 <div class="form-group">
+                  <label class="form-control-label">Date de demande</label>
+                  <input class="form-control" type="date" name="dateDemande" [(ngModel)]="univ.dateDemande" #t="ngModel">
+              </div>
+              
+              <div class="form-group">
+                  <label class="form-control-label">Date de RDV</label>
+                  <input class="form-control" type="date" name="dateRdv" [(ngModel)]="univ.dateRdv" #t="ngModel">
+              </div>
+              <div class="form-group">
+                  <label for="example-text-input" class="form-control-label">Last name</label>
+                  <input class="form-control" type="text" required minlength="3" name="status" [(ngModel)]="univ.status"  #t="ngModel"  >
+                  <div *ngIf="t.invalid">
+                    <app-errors [validator]="t"></app-errors>
+                    </div>
+              </div>
+      
+              </form>
+              
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="updateUniv(univ)">Update</button>
+          </div>
+      </div>
+    </div>
+  </div>

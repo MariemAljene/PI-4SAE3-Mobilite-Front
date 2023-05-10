@@ -1,0 +1,85 @@
+
+<div class="mb-3 row">
+    <label for="table-complete-search" class="col-xs-3 col-sm-auto col-form-label">Recherche:</label>
+    <div class="col-xs-3 col-sm-auto">
+        <input id="table-complete-search" type="text" class="form-control" name="searchTerm"  />
+    </div>
+    <button class="btn btn-primary ml-1" (click)="goToAddOpportunity()">
+        <i data-feather="plus" class="d-sm-none d-inline-block mr-0 mr-sm-1"></i><span class="d-none d-sm-inline-block">Ajouter Opportunité</span>
+    </button>
+</div>
+
+<div class="col-md-6 col-12">
+    <div class="d-flex justify-content-between align-items-center m-1">
+        <label class="d-flex align-items-center">Show
+            <select class="form-control mx-25" name="pageSize">
+                <option value="2">2</option>
+                <option value="4">4</option>
+                <option value="6">6</option>
+            </select>
+            entries
+        </label>
+    </div>
+</div>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Titre</th>
+        <th scope="col">Date de début</th>
+        <th scope="col">Date de fin</th>
+        <th scope="col">Spécialité</th>
+        <th scope="col">Capacité</th>
+        <th scope="col">Statut</th> <!-- Nouvelle colonne pour le statut -->
+        <th scope="col"></th>
+
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let opportunity of opportunities; let i = index">
+        <th scope="row">{{ i+1 }}</th>
+        <td>{{ opportunity.title }}</td>
+        <td>{{ opportunity.starDate }}</td>
+        <td>{{ opportunity.endDate }}</td>
+        <td>{{ opportunity.specialite }}</td>
+        <td>{{ opportunity.capacity }}</td>
+        <td>
+    <span style="color: {{ (currentDate > opportunity.endDate) ? 'red' : 'green' }}">
+        {{ (currentDate > opportunity.endDate) ? 'Terminée' : 'En cours' }}
+    </span>
+        </td>
+        <td><button type="button" class="btn btn-sm btn-outline-secondary" (click)="showUpdateForm(opportunity)">Modifier</button></td>
+
+        <button type="button" class="btn btn-sm btn-outline-secondary"
+                    (click)="confirmDeleteOpportunity(opportunity.id_Opportunity)">❌</button>
+
+    </tr>
+    </tbody>
+</table>
+<div *ngIf="selectedOpportunity">
+    <form (submit)="updateOpportunity()">
+        <div class="form-group">
+            <label for="title">Titre:</label>
+            <input type="text" class="form-control" id="title" [(ngModel)]="selectedOpportunity.title" name="title" required>
+        </div>
+        <div class="form-group">
+            <label for="starDate">Date de début:</label>
+            <input type="date" class="form-control" id="starDate" [(ngModel)]="selectedOpportunity.starDate" name="starDate" required>
+        </div>
+        <div class="form-group">
+            <label for="endDate">Date de fin:</label>
+            <input type="date" class="form-control" id="endDate" [(ngModel)]="selectedOpportunity.endDate" name="endDate" required>
+        </div>
+        <div class="form-group">
+            <label for="specialite">Spécialité:</label>
+            <input type="text" class="form-control" id="specialite" [(ngModel)]="selectedOpportunity.specialite" name="specialite" required>
+        </div>
+        <div class="form-group">
+            <label for="capacity">Capacité:</label>
+            <input type="number" class="form-control" id="capacity" [(ngModel)]="selectedOpportunity.capacity" name="capacity" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Enregistrer</button>
+    </form>
+</div>

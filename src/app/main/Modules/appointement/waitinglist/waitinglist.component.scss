@@ -1,0 +1,29 @@
+.qr-code {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    img {
+      width: 200px;
+      height: 200px;
+      background-color: #fff; /* Couleur de fond du QR Code */
+      border-radius: 10px; /* Coins arrondis */
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Ombre */
+      animation: pulse 1s infinite; /* Animation */
+    }
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+  
+    50% {
+      transform: scale(1.2);
+    }
+  
+    100% {
+      transform: scale(1);
+    }
+  }
+  
