@@ -1,63 +1,93 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { NavComponent } from './shared/nav/nav.component';
-
-import { APP_BASE_HREF } from '@angular/common';
-import { SpinnerComponent } from './shared/spinner/spinner.component';
-import { TopbarComponent } from './shared/topbar/topbar.component';
-import { FullSearchComponent } from './shared/full-search/full-search.component';
-import { FactsComponent } from './shared/facts/facts.component';
-import { AboutComponent } from './shared/about/about.component';
-import { FeaturesComponent } from './shared/features/features.component';
-import { ServiceComponent } from './shared/service/service.component';
-import { PricingComponent } from './shared/pricing/pricing.component';
-import { QuoteComponent } from './shared/quote/quote.component';
-import { TestimonialComponent } from './shared/testimonial/testimonial.component';
-import { TeamComponent } from './shared/team/team.component';
-import { BlogComponent } from './shared/blog/blog.component';
-import { VendorComponent } from './shared/vendor/vendor.component';
-import { FooterComponent } from './shared/footer/footer.component';
 import { RouterModule, Routes } from '@angular/router';
-import { CarouselComponent } from './shared/carousel/carousel.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 
-const ROUTES:Routes = [
-  {path:'features', component:FeaturesComponent},
-  {path:'service', component:ServiceComponent},
-  {path:'**', component:SpinnerComponent},
+import 'hammerjs';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { TranslateModule } from '@ngx-translate/core';
+import { ToastrModule } from 'ngx-toastr'; // For auth after login toast
 
+import { CoreModule } from '@core/core.module';
+import { CoreCommonModule } from '@core/common.module';
+import { CoreSidebarModule, CoreThemeCustomizerModule } from '@core/components';
 
-]
+import { coreConfig } from 'app/app-config';
 
+import { AppComponent } from 'app/app.component';
+import { LayoutModule } from 'app/layout/layout.module';
+import { HomeComponent } from "./main/Modules/home/home.component";
+
+import { SampleModule } from 'app/main/sample/sample.module';
+import {CommonModule, DatePipe} from "@angular/common";
+import {ContentHeaderModule} from "./layout/components/content-header/content-header.module";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {AppRoutingModule} from "./AppRoutingModule";
+import {CandidacyComponent} from "./main/Modules/candidacy/candidacy.component";
+import {EditOpportunityComponent} from "./main/Modules/opportunity/edit-opportunity/edit-opportunity.component";
+import {OpportunityComponent} from "./main/Modules/opportunity/opportunity.component";
+import {OpportunityFormComponent} from "./main/Modules/opportunity/opportunity-form/opportunity-form.component";
+import {
+  RetreiveQuestionComponent
+} from "./main/Modules/Question/Retreive-Question/retreive-question/retreive-question.component";
+import {AddQuestionComponent} from "./main/Modules/Question/Add_Question/add-question/add-question.component";
+import {RemoveOpportunityComponent} from "./main/Modules/opportunity/remove-opportunity/remove-opportunity.component";
+import { SpecialityChartComponent } from './main/Modules/opportunity/speciality-chart/speciality-chart.component';
+import { AddCondidacyComponent } from './main/Modules/candidacy/add-condidacy/add-condidacy.component';
+import { ChatRoomComponent } from './main/Modules/chat-room/chat-room.component';
+import { NgxDropzoneModule } from 'ngx-dropzone';
+
+const appRoutes: Routes = [];
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavComponent,
-    SpinnerComponent,
-    TopbarComponent,
-    FullSearchComponent,
-    FactsComponent,
-    AboutComponent,
-    FeaturesComponent,
-    ServiceComponent,
-    PricingComponent,
-    QuoteComponent,
-    TestimonialComponent,
-    TeamComponent,
-    BlogComponent,
-    VendorComponent,
-    FooterComponent,
-    CarouselComponent
-  ],
+  declarations: [AppComponent, HomeComponent,CandidacyComponent,
+    OpportunityComponent,
+    OpportunityFormComponent,
+    EditOpportunityComponent,
+    RemoveOpportunityComponent,
+    AddQuestionComponent,
+    RetreiveQuestionComponent,
+    SpecialityChartComponent,
+    AddCondidacyComponent,
+    ChatRoomComponent,
+   ],
   imports: [
+    CommonModule,
+    ContentHeaderModule,
+    ContentHeaderModule,
+    TranslateModule,
+    CoreCommonModule,
     BrowserModule,
+    FormsModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot(), // ToastrModule added
+    NgxDropzoneModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    HttpClientModule,NgbModule,
+    RouterModule.forRoot(appRoutes, {
+      scrollPositionRestoration: "enabled", // Add options right here
+      relativeLinkResolution: "legacy",
+    }),
+    TranslateModule.forRoot(),
+
+    //NgBootstrap
+    NgbModule,
+    ToastrModule.forRoot(),
+
+    // Core modules
+    CoreModule.forRoot(coreConfig),
+    CoreCommonModule,
+    CoreSidebarModule,
+    CoreThemeCustomizerModule,
     AppRoutingModule,
-    RouterModule.forRoot(ROUTES)
+    // App modules
+    LayoutModule,
   ],
-  providers: [{ provide: APP_BASE_HREF, useValue: '/' }],
-  bootstrap: [AppComponent]
+
+  bootstrap: [AppComponent],
+  exports: [ReactiveFormsModule, FormsModule],
+  providers:[DatePipe]
 })
-export class AppModule { }
+export class AppModule {}

@@ -1,17 +1,9 @@
-<app-topbar></app-topbar>
 
-<app-nav></app-nav>
-<app-carousel></app-carousel>
-<app-team></app-team>
-<app-blog></app-blog>
+<!-- horizontal-layout -->
+<ng-container *ngIf="coreConfig.layout.type === 'horizontal'">
+  <horizontal-layout></horizontal-layout>
+</ng-container>
+<!-- / horizontal-layout -->
 
-<app-about></app-about>
 
-<app-full-search></app-full-search>
-<app-facts></app-facts>
-<app-footer></app-footer>
-
-<!-- Back to Top -->
-<a href="#" class="btn btn-lg btn-primary btn-lg-square rounded back-to-top"><i class="bi bi-arrow-up"></i></a>
 <router-outlet></router-outlet>
-
