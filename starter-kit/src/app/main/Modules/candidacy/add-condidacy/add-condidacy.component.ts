@@ -59,6 +59,9 @@ export class AddCondidacyComponent implements OnInit {
         const newCondidacy: any = form.value;
         const idStudent = this.authenticationService.currentUserValue.userName.toString();
         this.id_Opportunity = +this.route.snapshot.paramMap.get('idOpportunity');
+        this.router.navigate(['/HistoriqueCandidacy']);
+
+
 console.log(this.id_Opportunity);
         if (!Number.isInteger(this.id_Opportunity)) {
             console.log('Invalid idOpportunity value: ' +  this.id_Opportunity);

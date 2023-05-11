@@ -32,7 +32,7 @@ export class QuizBackComponent implements OnInit {
 
     }      else              if(this.AuthenticationService.currentUserValue.role[0].roleName=="User" )
     {
-      this.router.navigate(['/OpportunityList']);
+      this.router.navigate(['/HistoriqueCandidacy']);
 
     }
   }

@@ -2,6 +2,9 @@
     <div class="form-group">
         <label for="title"><i class="bi bi-card-text"></i> Title</label>
         <input type="text" class="form-control" id="title" placeholder="Title" [(ngModel)]="title" name="title" required>
+        <div *ngIf="newOppForm.submitted && newOppForm.controls['title'].invalid" class="text-danger">
+            Title is required.
+        </div>
     </div>
     <div class="form-group">
         <label for="description"><i class="bi bi-chat-left"></i> Description</label>
@@ -10,18 +13,28 @@
     <div class="form-group">
         <label for="type"><i class="bi bi-card-list"></i> Type</label>
         <select class="form-control" id="type" name="type" [(ngModel)]="type" required>
+            <option value="" disabled selected>Select a type</option>
             <option value="Exchange_Semester">Exchange_Semester</option>
             <option value="Double_Degree">Double_Degree</option>
             <option value="Master_Double_Degree">Master_Double_Degree</option>
         </select>
+        <div *ngIf="newOppForm.submitted && newOppForm.controls['type'].invalid" class="text-danger">
+            Type is required.
+        </div>
     </div>
     <div class="form-group">
         <label for="startDate"><i class="bi bi-calendar2-week"></i> Start Date</label>
-        <input type="date" class="form-control" id="startDate" name="startDate" [(ngModel)]="startDate">
+        <input type="date" class="form-control" id="startDate" name="startDate" [(ngModel)]="startDate" required>
+        <div *ngIf="newOppForm.submitted && newOppForm.controls['startDate'].invalid" class="text-danger">
+            Start Date is required.
+        </div>
     </div>
     <div class="form-group">
         <label for="endDate"><i class="bi bi-calendar2-week"></i> End Date</label>
-        <input type="date" class="form-control" id="endDate" name="endDate" [(ngModel)]="endDate">
+        <input type="date" class="form-control" id="endDate" name="endDate" [(ngModel)]="endDate" required>
+        <div *ngIf="newOppForm.submitted && newOppForm.controls['endDate'].invalid" class="text-danger">
+            End Date is required.
+        </div>
     </div>
     <div class="form-group">
         <label for="capacity"><i class="bi bi-person-plus"></i> Capacity</label>

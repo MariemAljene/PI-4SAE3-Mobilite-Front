@@ -49,7 +49,7 @@ export class CandidacyServiceService implements Resolve<any>{
     if (idOpportunity) {
       return this._http.post(this.api+`/Pi_Mobility/Condidacy/sendSelectedCandidatesEmailsTest/${idOpportunity}`, {},this.httpOptions);
     } else {
-      console.log("Veuillez sélectionner une opportunité avant d'envoyer l'email.");
+      console.log("Please Provide A Valid Path.");
       return of(null);
     }
   }
