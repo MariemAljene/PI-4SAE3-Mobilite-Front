@@ -1,0 +1,40 @@
+<div class="row mb-3">
+    <div class="col-sm-6">
+        <div class="input-group">
+            <app-search (searchTextChanged)="onSearchTextEntred($event)"> </app-search>
+        </div>
+    </div>
+
+</div>
+
+<div class="table-responsive">
+    <table class="table table-striped-columns">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">question/Reponse</th>
+            <th scope="col">type</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let questionRep of questionReps | paginate: { itemsPerPage: 5, currentPage: p, totalItems: questionReps.length } ; let i = index " class="foyer-container" >
+
+
+            <ng-container *ngIf="searchText === '' || questionRep.type.toLowerCase().includes(searchText)" >
+
+                <th scope="row">{{ i+1 }}</th>
+                <td>{{ questionRep.question }}</td>
+                <td>{{ questionRep.type }}</td>
+            </ng-container>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div class="pagination-container">
+    <pagination-controls (pageChange)="p = $event" previousLabel="<" nextLabel=">" class="pagination"></pagination-controls>
+</div>
+
+
+
+

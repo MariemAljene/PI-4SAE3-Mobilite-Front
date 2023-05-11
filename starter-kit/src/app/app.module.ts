@@ -44,6 +44,21 @@ import {AfficherQuestionComponent} from "./main/Modules/Question/afficher-questi
 import { RetreiveQuizezComponent } from './main/Modules/Quiz/retreive-quizez/retreive-quizez.component';
 import {UpdateOpportunityComponent} from "./main/Modules/opportunity/update-opportunity/update-opportunity.component";
 import { QuizResultComponent } from './main/Modules/Quiz/quiz-result/quiz-result.component';
+import {MatDialogModule} from "@angular/material/dialog";
+import { AjouterQuestionReponseComponent } from './main/Modules/question-reponse/ajouter-question-reponse/ajouter-question-reponse.component';
+import { FoyerComponent } from './main/Modules/foyer/foyer.component';
+import { AjouterFoyerComponent } from './main/Modules/foyer/ajouter-foyer/ajouter-foyer.component';
+import { SearchComponent } from './main/Modules/search/search.component';
+import { ReclamationComponent } from './main/Modules/reclamation/reclamation.component';
+import { AjouterReclamationComponent } from './main/Modules/reclamation/ajouter-reclamation/ajouter-reclamation.component';
+import { VoiceRecognitionComponent } from './main/Modules/voice-recognition/voice-recognition.component';
+import { FoyerFrontComponent } from './main/Modules/foyer/foyer-front/foyer-front.component';
+import { AjouterReponseComponent } from './main/Modules/question-reponse/reponse/ajouter-reponse/ajouter-reponse.component';
+import {NgxPaginationModule} from "ngx-pagination";
+import {UserImageComponent} from "./main/Modules/user-image/user-image.component";
+import { QuestionFrontComponent } from './main/Modules/question-reponse/question-front/question-front.component';
+import {ReponseComponent} from "./main/Modules/question-reponse/reponse/reponse.component";
+import {QuestionReponseComponent} from "./main/Modules/question-reponse/question-reponse.component";
 const appRoutes: Routes = [];
 
 @NgModule({
@@ -60,9 +75,23 @@ const appRoutes: Routes = [];
     HistoriqueCondidaciesComponent,
     AfficherQuestionComponent,
     QuizBackComponent,
+    SearchComponent,
     QuizAddComponent,
     RetreiveQuizezComponent,
     UpdateOpportunityComponent,
+    UserImageComponent,
+    AjouterQuestionReponseComponent,
+    FoyerComponent,
+    AjouterFoyerComponent,
+    SearchComponent,
+    ReclamationComponent,
+    AjouterReclamationComponent,
+    VoiceRecognitionComponent,
+    FoyerFrontComponent,
+    AjouterReponseComponent,
+    QuestionFrontComponent,
+    QuestionReponseComponent,
+    ReponseComponent,
     QuizResultComponent,],
   imports: [
     CommonModule,
@@ -71,10 +100,12 @@ const appRoutes: Routes = [];
     TranslateModule,
     CoreCommonModule,
     BrowserModule,
-    FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     HttpClientModule,NgbModule,
+    NgxPaginationModule,
+    MatDialogModule,
+    FormsModule,
     RouterModule.forRoot(appRoutes, {
       scrollPositionRestoration: "enabled", // Add options right here
       relativeLinkResolution: "legacy",

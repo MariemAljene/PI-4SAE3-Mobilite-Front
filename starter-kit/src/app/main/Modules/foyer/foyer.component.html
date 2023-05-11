@@ -1,0 +1,61 @@
+<div class="row mb-3">
+    <div class="col-sm-6">
+        <div class="input-group">
+            <app-search (searchTextChanged)="onSearchTextEntred($event)"> </app-search>
+
+            <div class="input-group-append">
+                <button class="btn btn-primary" type="button"  (click)="goToAjouterFoyer()">
+                    <i class="fas fa-plus"></i> Ajouter Foyer
+                </button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="table-responsive">
+    <table class="table table-hover table-bordered">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">name</th>
+            <th scope="col">pays</th>
+            <th scope="col">capacite</th>
+            <th scope="col">placeLibre</th>
+            <th scope="col">Actions</th>
+
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let foyer of Foyers  ; let i = index " class="foyer-container" >
+
+
+            <ng-container *ngIf="searchText === '' || foyer.name.toLowerCase().includes(searchText)" >
+
+                 <th scope="row">{{ i+1 }}</th>
+
+
+
+                <td>{{ foyer.name }}</td>
+                <td>{{ foyer.pays }}</td>
+                <td>{{ foyer.capacite }}</td>
+                 <td>{{ foyer.placeLibre }}</td>
+                <td>
+                <button type="button" class="btn btn-sm btn-outline-secondary mr-2" >
+                    <i class="fas fa-edit"></i> Modifier
+                </button>
+                <button type="button" class="btn btn-sm btn-outline-danger" (click)="deleteFoyer(foyer.id,i)" >
+                    <i class="fas fa-times"></i>
+                </button>
+                </td>
+
+            </ng-container>
+
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+

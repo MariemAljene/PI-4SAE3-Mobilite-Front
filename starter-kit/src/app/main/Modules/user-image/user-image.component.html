@@ -1,0 +1,30 @@
+<p>user-image works!</p>
+
+<div class="container my-3">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">User</th>
+                        <th scope="col">Image</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>{{ image.username }}</td>
+                        <td>
+                            <input type="text" class="form-control" [(ngModel)]="image.image">
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+

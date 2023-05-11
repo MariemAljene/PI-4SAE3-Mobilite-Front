@@ -1,0 +1,25 @@
+<form #newOppFormssq="ngForm" (ngSubmit)="onSubmit(newOppFormssq)">
+
+    <div class="form-group">
+        <label for="title"><i class="bi bi-card-text"></i> Nom Du Foyer</label>
+        <input type="text" class="form-control" id="title" placeholder="namefoyer"  name="name"[(ngModel)]="name"  required>
+    </div>
+
+    <div class="form-group">
+        <label for="pays"><i class="bi bi-card-text"></i> Pays</label>
+        <input type="text" class="form-control" id="pays" placeholder="pays" name="pays" [(ngModel)]="pays" >
+    </div>
+    <div class="form-group">
+        <label for="capacite"><i class="bi bi-card-text"></i> Capacite</label>
+        <input type="text" class="form-control" id="capacite" placeholder="capacite"  name="capacite"[(ngModel)]="capacite"  >
+    </div>
+    <div class="form-group">
+        <label for="placeLibre"><i class="bi bi-card-text"></i>Les Places Libres</label>
+        <input type="text" class="form-control" id="placeLibre" placeholder="placeLibre" name="placeLibre" [(ngModel)]="placeLibre"  >
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+
+

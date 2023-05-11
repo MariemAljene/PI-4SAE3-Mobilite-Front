@@ -53,7 +53,7 @@ export class CandidacyServiceService implements Resolve<any>{
       return of(null);
     }
   }
-  createCandidate( candidate: Condidacy, idStudent: string,id_Opportunity: number): Observable<Condidacy> {
+  createCandidate( candidate: Condidacy,idStudent:string,id_Opportunity:number): Observable<Condidacy> {
     console.log(id_Opportunity);
     return this._http.post<Condidacy>(this.api+`/Pi_Mobility/Condidacy/CreateNew/${idStudent}/${id_Opportunity}`,candidate,this.httpOptions);
   }

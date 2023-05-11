@@ -1,0 +1,23 @@
+<div class="form-group">
+    <label for="code">Code:</label>
+    <input type="text" class="form-control" id="code" >
+</div>
+<button class="btn btn-primary" style="margin-right: 0.5cm">Ajouter reponse</button>
+<button class="btn btn-primary" >Recherche</button>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Réponse</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let x of reponses; let i = index">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ x.reponse }}</td>
+
+    </tr>
+    </tbody>
+</table>

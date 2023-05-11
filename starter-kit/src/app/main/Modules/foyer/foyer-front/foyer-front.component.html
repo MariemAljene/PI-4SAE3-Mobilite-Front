@@ -1,0 +1,73 @@
+<div class="row mb-3">
+    <div class="col-sm-6">
+        <div class="input-group">
+            <app-search (searchTextChanged)="onSearchTextEntred($event)"> </app-search>
+        </div>
+    </div>
+
+</div>
+
+<div class="table-responsive">
+    <table class="table table-striped-columns">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">name</th>
+            <th scope="col">pays</th>
+            <th scope="col">capacite</th>
+            <th scope="col">Details</th>
+
+
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let foyer of Foyers | paginate: { itemsPerPage: 5, currentPage: p, totalItems: Foyers.length } ; let i = index " class="foyer-container" >
+
+
+            <ng-container *ngIf="searchText === '' || foyer.pays.toLowerCase().includes(searchText)" >
+
+                <th scope="row">{{ i+1 }}</th>
+
+
+
+                <td>{{ foyer.name }}</td>
+                <td>{{ foyer.pays }}</td>
+                <td>{{ foyer.capacite }}</td>
+                <td><button type="button" class="btn btn-secondary btn-sm" (click)="getCountryDetails(foyer.pays)">Details</button></td>
+                <td>
+                    <div *ngIf="foyer.countryDetails">
+                        <h4>Country Details:</h4>
+                        <p>Population: {{ foyer.countryDetails.population}}</p>
+
+                        <p>capital: {{ foyer.countryDetails.capital}}</p>
+
+                        <!-- Add more details as needed -->
+                    </div>
+                </td>
+
+
+
+
+
+
+
+
+
+
+            </ng-container>
+
+        </tr>
+        </tbody>
+    </table>
+    <div><button type="button" class="btn btn-primary" (click)="affectationEtudiant()">Demande D'affection a foyer</button></div>
+
+</div>
+
+<div class="pagination-container">
+    <pagination-controls (pageChange)="p = $event" previousLabel="<" nextLabel=">" class="pagination"></pagination-controls>
+</div>
+
+
+
+

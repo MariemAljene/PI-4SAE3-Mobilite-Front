@@ -63,19 +63,19 @@
     <form #condidacyForm="ngForm" (ngSubmit)="submitForm(condidacyForm)">
         <div class="form-group">
             <label for="moyenne_1year">Moyenne de première année</label>
-            <input type="number" class="form-control" id="moyenne_1year" name="moyenne_1year" [(ngModel)]="condidacy.moyenne_1year" placeholder="Ex: 15.5" required>
+            <input type="number" class="form-control" id="moyenne_1year" name="moyenne_1year" [(ngModel)]="Condidacy.moyenne_1year" placeholder="Ex: 15.5" required>
         </div>
         <div class="form-group">
             <label for="moyenne_2year">Moyenne de deuxième année</label>
-            <input type="number" class="form-control" id="moyenne_2year" name="moyenne_2year" [(ngModel)]="condidacy.moyenne_2year" placeholder="Ex: 16.2" required>
+            <input type="number" class="form-control" id="moyenne_2year" name="moyenne_2year" [(ngModel)]="Condidacy.moyenne_2year" placeholder="Ex: 16.2" required>
         </div>
         <div class="form-group">
             <label for="moyenne_3year">Moyenne de troisième année</label>
-            <input type="number" class="form-control" id="moyenne_3year" name="moyenne_3year" [(ngModel)]="condidacy.moyenne_3year" placeholder="Ex: 14.8" required>
+            <input type="number" class="form-control" id="moyenne_3year" name="moyenne_3year" [(ngModel)]="Condidacy.moyenne_3year" placeholder="Ex: 14.8" required>
         </div>
         <div class="form-group">
             <label for="motivationdescription">Description de votre motivation</label>
-            <textarea class="form-control" id="motivationdescription" name="motivationdescription" [(ngModel)]="condidacy.motivationdescription" placeholder="Expliquez brièvement pourquoi vous souhaitez postuler." required></textarea>
+            <textarea class="form-control" id="motivationdescription" name="motivationdescription" [(ngModel)]="Condidacy.motivationdescription" placeholder="Expliquez brièvement pourquoi vous souhaitez postuler." required></textarea>
         </div>
 
         <button type="submit" class="btn btn-primary">Envoyer</button>

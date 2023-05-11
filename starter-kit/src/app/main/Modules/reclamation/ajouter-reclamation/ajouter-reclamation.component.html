@@ -1,0 +1,22 @@
+<form #newOppFormssq="ngForm" (ngSubmit)="onSubmit(newOppFormssq)" class="d-flex flex-column align-items-center">
+
+    <div class="form-group">
+        <label for="comment"> Contenu de Reclamation</label><br>
+        <textarea type="text" class="form-control" id="comment" placeholder="comment"  name="comment"  rows="4" cols="50" [(ngModel)]="comment"  required></textarea><br><br>
+    </div>
+
+    <div class="form-group">
+        <label for="objet"><i class="bi bi-card-text"></i> objet</label>
+        <input type="text" class="form-control" id="objet" placeholder="objet" name="objet" [(ngModel)]="objet" >
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+
+
+
+
+
+
+

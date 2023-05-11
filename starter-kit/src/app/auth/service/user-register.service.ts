@@ -15,6 +15,7 @@ export class UserRegisterService {
   public getRoles(): [] {
     return JSON.parse(localStorage.getItem('roles'));
   }
+
   //
   public setToken(jwtToken: string) {
     localStorage.setItem('jwtToken', jwtToken);

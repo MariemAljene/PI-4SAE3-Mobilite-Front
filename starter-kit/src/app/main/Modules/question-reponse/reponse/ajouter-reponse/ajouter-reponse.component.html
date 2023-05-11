@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Ajouter Reponse</title>
+    <style>
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 50px;
+        }
+
+        form {
+            width: 50%;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="number"],
+        textarea {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 100%;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        textarea {
+            height: 150px;
+        }
+
+        button[type="submit"] {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0069d9;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Apply For The Opportunity</h2>
+    <form #ReponseForm="ngForm" (ngSubmit)="submitForm(ReponseForm)">
+        <div class="form-group">
+            <label for="reponse">Moyenne de première année</label>
+            <input type="number" class="form-control" id="reponse" name="reponse" [(ngModel)]="reponses.reponse" placeholder="Ex: 15.5" required>
+        </div>
+
+
+
+
+        <button type="submit" class="btn btn-primary">Envoyer</button>
+    </form>
+</div>
+</body>
+</html>

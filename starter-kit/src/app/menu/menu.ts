@@ -10,6 +10,35 @@ export const menu: CoreMenu[] = [
     url: 'home'
   },
   {
+    id: 'Question/Reponse',
+    title: 'Question/Reponse',
+    translate: 'Question/Reponse',
+    type: 'item',
+    icon: 'file',
+    url: 'questionReponse'
+  }
+  ,
+  {
+    id: 'Foyer',
+    title: 'Foyer',
+    translate: 'Foyer',
+    type: 'item',
+    icon: 'file',
+    url: 'foyer'
+  }
+  ,
+
+
+  {
+    id: 'Reclamation',
+    title: 'Reclamation',
+    translate: 'Reclamation',
+    type: 'item',
+    icon: 'file',
+    url: 'Reclamations'
+  },
+
+  {
     id: 'Candidacy',
     title: 'Candidacy',
     translate: 'candidacy',

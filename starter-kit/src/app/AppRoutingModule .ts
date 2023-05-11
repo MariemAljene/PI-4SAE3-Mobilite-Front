@@ -31,6 +31,27 @@ import {AfficherQuestionComponent} from "./main/Modules/Question/afficher-questi
 import {RetreiveQuizezComponent} from "./main/Modules/Quiz/retreive-quizez/retreive-quizez.component";
 import {UpdateOpportunityComponent} from "./main/Modules/opportunity/update-opportunity/update-opportunity.component";
 import {QuizResultComponent} from "./main/Modules/Quiz/quiz-result/quiz-result.component";
+import {ProfileModule} from "./main/Modules/profile/profile.module";
+import {ReponseComponent} from "./main/Modules/question-reponse/reponse/reponse.component";
+import {AjouterFoyerComponent} from "./main/Modules/foyer/ajouter-foyer/ajouter-foyer.component";
+import {FoyerComponent} from "./main/Modules/foyer/foyer.component";
+import {QuestionFrontComponent} from "./main/Modules/question-reponse/question-front/question-front.component";
+
+
+import {ReclamationComponent} from "./main/Modules/reclamation/reclamation.component";
+import {FoyerFrontComponent} from "./main/Modules/foyer/foyer-front/foyer-front.component";
+
+import {
+    AjouterReclamationComponent
+} from "./main/Modules/reclamation/ajouter-reclamation/ajouter-reclamation.component";
+import {VoiceRecognitionComponent} from "./main/Modules/voice-recognition/voice-recognition.component";
+import {
+    AjouterReponseComponent
+} from "./main/Modules/question-reponse/reponse/ajouter-reponse/ajouter-reponse.component";
+import {QuestionReponseComponent} from "./main/Modules/question-reponse/question-reponse.component";
+import {
+    AjouterQuestionReponseComponent
+} from "./main/Modules/question-reponse/ajouter-question-reponse/ajouter-question-reponse.component";
 
 
 
@@ -61,6 +82,64 @@ const routes: Routes = [
         path: 'delete-opportunity/:Id_Opportunity',
         component: RemoveOpportunityComponent
     },
+
+    {
+        path: 'Reponse',
+        pathMatch: 'full',component:ReponseComponent
+
+
+    },
+    {
+        path: 'Reclamations',
+        pathMatch: 'full',component:ReclamationComponent
+
+
+    },
+    {
+        path: 'QuestionRepFront',
+        pathMatch: 'full',component:QuestionFrontComponent
+
+
+    },
+    {
+        path: 'ajouterReclamation',
+        pathMatch: 'full',component:AjouterReclamationComponent
+
+
+
+    },
+    {
+        path: 'VoiceRecognition',
+        pathMatch: 'full',component:VoiceRecognitionComponent
+
+
+    },
+    {
+        path: 'ajouterReponse',
+        pathMatch: 'full',component:AjouterReponseComponent
+
+
+    },
+    {
+        path: 'questionReponse',
+        pathMatch: 'full',component:QuestionReponseComponent
+    },
+    {
+        path: 'ajouterQuestionRep',
+        component:AjouterQuestionReponseComponent
+    },
+    {
+        path: 'foyer',
+        pathMatch: 'full',component:FoyerComponent
+    },
+    {
+        path: 'foyerFront',
+        pathMatch: 'full',component:FoyerFrontComponent
+    },
+    {
+        path: 'ajouterFoyer',
+        pathMatch: 'full',component:AjouterFoyerComponent
+    },
     {path: 'Retreive-opportunite', component: OpportunityComponent},
 
     {path: 'ajouter-opportunite', component: OpportunityFormComponent},
@@ -86,7 +165,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    imports: [AdminModule,RouterModule.forRoot(routes,{onSameUrlNavigation: 'reload'})],
+    imports: [AdminModule,ProfileModule,RouterModule.forRoot(routes,{onSameUrlNavigation: 'reload'})],
     exports: [RouterModule],
 })
 export class AppRoutingModule {}

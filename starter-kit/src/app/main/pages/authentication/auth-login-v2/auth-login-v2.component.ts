@@ -16,6 +16,8 @@ import {AuthenticationService} from "../../../../auth/service";
 })
 export class AuthLoginV2Component implements OnInit {
   //  Public
+  protected aFormGroup: FormGroup;
+  captchaResponse: string;
   public coreConfig: any;
   public loginForm: FormGroup;
   public loading = false;
@@ -77,6 +79,7 @@ export class AuthLoginV2Component implements OnInit {
   }
 
   onSubmit() {
+
     this.submitted = true;
 
     // stop here if form is invalid
@@ -107,11 +110,11 @@ export class AuthLoginV2Component implements OnInit {
 
   // Lifecycle Hooks
   // -----------------------------------------------------------------------------------------------------
-
   /**
    * On init
    */
   ngOnInit(): void {
+
     this.loginForm = this._formBuilder.group({
       username: ['', [Validators.required]],
       password: ['', Validators.required]

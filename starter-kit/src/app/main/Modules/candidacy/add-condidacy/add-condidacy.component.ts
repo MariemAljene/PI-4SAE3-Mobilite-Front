@@ -34,7 +34,13 @@ export class AddCondidacyComponent implements OnInit {
     idTable!: number;
     nameFaculte!: string
 
+    Condidacy = {
+        moyenne_1year: '',
+        moyenne_2year: '',
+        moyenne_3year: '',
+        motivationdescription:''
 
+    };
     constructor(
         private route: ActivatedRoute,
         private router: Router,
@@ -53,9 +59,14 @@ export class AddCondidacyComponent implements OnInit {
 
     }
 
+
     @Input() condidacy: Condidacy;
 
     submitForm(form: NgForm) {
+        console.log('moyenne_1year:', this.moyenne_1year);
+        console.log('moyenne_2year:', this.moyenne_2year);
+        console.log('moyenne_3year:', this.moyenne_3year);
+
         const newCondidacy: any = form.value;
         const idStudent = this.authenticationService.currentUserValue.userName.toString();
         this.id_Opportunity = +this.route.snapshot.paramMap.get('idOpportunity');
@@ -66,6 +77,9 @@ console.log(this.id_Opportunity);
         if (!Number.isInteger(this.id_Opportunity)) {
             console.log('Invalid idOpportunity value: ' +  this.id_Opportunity);
             return;
+            console.log('moyenne_1year:', this.moyenne_1year);
+            console.log('moyenne_2year:', this.moyenne_2year);
+            console.log('moyenne_3year:', this.moyenne_3year);
         }
 
         this.condidacyService.createCandidate(newCondidacy, idStudent, this.id_Opportunity)

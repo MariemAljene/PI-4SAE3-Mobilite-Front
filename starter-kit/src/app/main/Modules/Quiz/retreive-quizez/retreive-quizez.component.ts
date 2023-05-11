@@ -25,17 +25,7 @@ quizez:Quiz[]
                 this.quizez = data;
                 console.log(this.quizez); // for debugging or to verify the received data
 
-                // Iterate through each quiz and get the number of pages to print
-                this.quizez.forEach(quiz => {
-                    this.quizServiceService.getNbPagesAImprimer(quiz.id_Quiz).subscribe(
-                        (numPages: number) => {
-                            this.numPagesToPrint = numPages;
-                        },
-                        error => {
-                            console.log(error);
-                        }
-                    );
-                });
+
             },
             error => {
                 console.log(error);

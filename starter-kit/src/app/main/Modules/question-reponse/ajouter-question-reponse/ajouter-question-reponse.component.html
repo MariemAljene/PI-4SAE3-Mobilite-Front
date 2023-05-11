@@ -1,0 +1,30 @@
+<div style="margin: 100px;">
+    <h1> Voice recognition</h1>
+    <button class=" sp-icon  sp-icon-ri-user-voice-line " (click)="startVoiceRecognition()">Start Voice Recognition</button>
+    <p>Recognized Text: {{ voiceRecognitionService.text }}</p> </div>
+
+
+<form #newOppFormssq="ngForm" (ngSubmit)="onSubmit(newOppFormssq)">
+    <div class="form-group">
+        <label for="title"><i class="bi bi-card-text"></i> Question</label>
+
+        <input type="text" class="form-control" id="title" placeholder="Title" [(ngModel)]="questionRep" name="question" required>
+    </div>
+    <div class="form-group">
+        <label for="type"><i class="bi bi-journal-richtext"></i> Type</label>
+        <select class="form-control" id="type" name="type" [(ngModel)]="Type" required>
+            <option value="Dosier">Dosier</option>
+            <option value="Opportunity">Opportunity</option>
+            <option value="Foyer">Foyer</option>
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<div class="row justify-content-center">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <button class="btn btn-lg btn-outline-secondary btn-block my-3" style="font-size: 2rem;" (click)="RedirectToVoice()">Voice test</button>
+    </div>
+    <div class="col-md-4"></div>
+</div>

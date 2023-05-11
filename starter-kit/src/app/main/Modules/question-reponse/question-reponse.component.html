@@ -1,0 +1,30 @@
+<div class="form-group">
+    <label for="code">Code:</label>
+    <input type="text" class="form-control" id="code" >
+</div>
+<button class="btn btn-primary" (click)="goToAjouterQuestion()" style="margin-right: 0.5cm">Ajouter</button>
+<button class="btn btn-primary" >Recherche</button>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th  scope="col">Question</th>
+        <th scope="col">Type</th>
+
+        <th scope="col">Action</th>
+    </tr>
+    </thead>
+    <tbody >
+    <tr *ngFor="let x of questionReps; let i = index">
+        <td  scope="row">{{ i+1  }}</td>
+        <td    id=q{{i+1}}  name="question" ngDefaultControl  class="question" contenteditable=false >{{ x.question }}</td>
+        <td    id=t{{i+1}} contenteditable=false >{{ x.type }}</td>
+
+        <td><button class="btn btn-success" (click)="unlockUser(i+1)">Edit</button>
+            <button id={{i+1}} hidden=true style="margin-left: 0.2cm;" class="btn btn-success buttonSave" (click)="save(i+1)">Save</button>
+        <button (click)="deleteQuestion(x.idQuestion,i)"  class="fa fa-trash btn-danger btn"></button></td>
+
+    </tr>
+    </tbody>
+</table>
